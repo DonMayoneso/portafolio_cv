@@ -847,6 +847,62 @@ main {
 .social-item .social-link:hover { color: var(--light-gray); }
 
 /*-----------------------------------*\
+  #RESPONSIVE MOBILE
+\*-----------------------------------*/
+
+@media screen and (max-width: 768px) {
+  .sidebar-info {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .avatar-box {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .info-content {
+    width: 100%;
+  }
+  
+  .info-content .title {
+    margin: 0 auto;
+  }
+  
+  .info_more-btn {
+    top: 10px;
+    right: 10px;
+  }
+  
+  .sidebar.active {
+    max-height: 800px; /* Ajusta según sea necesario */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .avatar-box {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .info-content .name {
+    font-size: calc(var(--fs-3) * 0.9);
+  }
+  
+  .contact-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  
+  .contact-info {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+/*-----------------------------------*\
   #NAVBAR
 \*-----------------------------------*/
 
