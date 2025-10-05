@@ -167,7 +167,7 @@
       "id": 19,
       "title": "Cultural",
       "category": "fotografia",
-      "image": "assets/fotografia/cultural.jpg", 
+      "image": "assets/fotografia/cultural.png", 
       "description": "Fotografia de evento cultural Inti Raymi",
       "technologies": ["Lightroom", "Photoshop", "Canon Rebel T7"],
       "year": "2022",
@@ -177,7 +177,7 @@
       "id": 20,
       "title": "Naturaleza",
       "category": "fotografia",
-      "image": "assets/fotografia/naturaleza.jpg", 
+      "image": "assets/fotografia/naturaleza.png", 
       "description": "Práctica fotografica sobre naturaleza con juego de enfoques",
       "technologies": ["Lightroom", "Photoshop", "Canon Rebel T7"],
       "year": "2022",
@@ -236,4 +236,5 @@
     
 
   ]
+
 }
