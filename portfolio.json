@@ -232,9 +232,20 @@
       "technologies": ["Illustrator"],
       "year": "2019",
       "type": "image"
+    },
+    {
+      "id": 26,
+      "title": "Generador Qr",
+      "category": "desarrollo-web",
+      "image": "assets/web_qr.png",
+      "description": "Desarrollo de generador qr gratuito, con opcion de deacarga y exportación en Jpg, Png y Svg, https://donmayoneso.github.io/generadorQr", 
+      "technologies": ["HTML5", "CSS3", "JavaScript"],
+      "year": "2025",
+      "type": "image"
     }
+
     
 
-  ]
 
-}
+  ]}
+
