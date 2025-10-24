@@ -99,34 +99,150 @@
 
 }
 
-/* Tema Claro */
+/* Tema Claro - CORREGIDO */
 [data-theme="light"] {
   --smoky-black: hsl(0, 0%, 98%);
   --eerie-black-1: hsl(0, 0%, 95%);
   --eerie-black-2: hsl(0, 0%, 92%);
-  --jet: hsl(0, 0%, 85%);
-  --onyx: hsl(0, 0%, 80%);
-  --white-1: hsl(0, 0%, 20%);
-  --white-2: hsl(0, 0%, 15%);
-  --light-gray: hsl(0, 0%, 40%);
-  --light-gray-70: hsla(0, 0%, 40%, 0.7);
+  --jet: hsl(0, 0%, 80%);
+  --onyx: hsl(0, 0%, 75%);
+  --white-1: hsl(0, 0%, 15%);
+  --white-2: hsl(0, 0%, 20%);
+  --light-gray: hsl(0, 0%, 35%);
+  --light-gray-70: hsla(0, 0%, 35%, 0.7);
+  
+  /* Cambio de amarillo a azul DeepSeek (#1a73e8) */
+  --orange-yellow-crayola: #1a73e8;
+  --vegas-gold: #1a73e8;
+  --text-gradient-yellow: linear-gradient(to right, #1a73e8, #1a73e8);
+  --bg-gradient-yellow-1: linear-gradient(
+    to bottom right, 
+    #1a73e8 0%, 
+    hsla(216, 81%, 50%, 0) 50%
+  );
+  --bg-gradient-yellow-2: linear-gradient(
+    135deg, 
+    hsla(216, 81%, 50%, 0.251) 0%, 
+    hsla(216, 81%, 50%, 0) 59.86%
+  ), hsl(0, 0%, 92%);
   
   /* Gradientes para tema claro */
   --bg-gradient-onyx: linear-gradient(
     to bottom right, 
-    hsl(0, 0%, 85%) 3%, 
-    hsl(0, 0%, 90%) 97%
+    hsl(0, 0%, 90%) 3%, 
+    hsl(0, 0%, 95%) 97%
   );
   --bg-gradient-jet: linear-gradient(
     to bottom right, 
-    hsla(0, 0%, 80%, 0.251) 0%, 
-    hsla(0, 0%, 85%, 0) 100%
-  ), hsl(0, 0%, 92%);
+    hsla(0, 0%, 85%, 0.251) 0%, 
+    hsla(0, 0%, 90%, 0) 100%
+  ), hsl(0, 0%, 95%);
   --border-gradient-onyx: linear-gradient(
     to bottom right, 
     hsl(0, 0%, 75%) 0%, 
     hsla(0, 0%, 75%, 0) 50%
   );
+}
+
+/* Navbar en tema claro */
+[data-theme="light"] .navbar {
+  background: hsla(0, 0%, 95%, 0.85);
+  border: 1px solid var(--jet);
+}
+
+[data-theme="light"] .navbar-link {
+  color: var(--white-1);
+}
+
+[data-theme="light"] .navbar-link:hover,
+[data-theme="light"] .navbar-link:focus {
+  color: var(--light-gray);
+}
+
+[data-theme="light"] .navbar-link.active {
+  color: var(--orange-yellow-crayola);
+}
+
+[data-theme="light"] .sidebar,
+[data-theme="light"] article {
+  border: 1px solid var(--jet);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .content-card,
+[data-theme="light"] .service-item,
+[data-theme="light"] .reference-item {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .icon-box {
+  color: var(--orange-yellow-crayola);
+}
+
+[data-theme="light"] .article-title::after {
+  background: var(--text-gradient-yellow);
+}
+
+[data-theme="light"] .timeline-item::after {
+  background: var(--text-gradient-yellow);
+}
+
+[data-theme="light"] .skill-progress-fill {
+  background: var(--text-gradient-yellow);
+}
+
+[data-theme="light"] .form-btn:hover,
+[data-theme="light"] .social-button:hover,
+[data-theme="light"] .download-cv-btn:hover {
+  color: white;
+}
+
+/* Visibilidad para tema claro */
+[data-theme="light"] .about-text,
+[data-theme="light"] .timeline-text,
+[data-theme="light"] .service-item-text,
+[data-theme="light"] .skill-tools,
+[data-theme="light"] .modal-description,
+[data-theme="light"] .contact-details p,
+[data-theme="light"] .blog-text {
+  color: var(--light-gray);
+  font-weight: var(--fw-400);
+}
+
+[data-theme="light"] .project-title {
+  color: var(--white-1);
+  font-weight: var(--fw-500);
+}
+
+[data-theme="light"] .project-category {
+  color: var(--light-gray);
+}
+
+[data-theme="light"] .filter-item button.active {
+  color: var(--orange-yellow-crayola);
+  font-weight: var(--fw-500);
+}
+
+[data-theme="light"] .reference-name {
+  color: var(--orange-yellow-crayola);
+}
+
+[data-theme="light"] .modal-title {
+  color: var(--orange-yellow-crayola);
+}
+
+/* Mejor contraste para elementos interactivos */
+[data-theme="light"] .form-input:focus {
+  border-color: var(--orange-yellow-crayola);
+  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+[data-theme="light"] .theme-toggle:hover {
+  background: var(--bg-gradient-yellow-1);
+}
+
+[data-theme="light"] .theme-toggle:hover .theme-text {
+  color: white;
 }
 
 /*-----------------------------------*\
@@ -3000,4 +3116,110 @@ textarea.form-input::-webkit-resizer { display: none; }
   .model3d-viewer {
     height: 700px;
   }
+}
+
+/*-----------------------------------*\
+  #CONTACT FORM
+\*-----------------------------------*/
+
+.contact-form-section {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid var(--jet);
+}
+
+.contact-form {
+  margin-bottom: 20px;
+}
+
+.form-note {
+  color: var(--light-gray-70);
+  font-size: var(--fs-7);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 15px;
+  background: var(--border-gradient-onyx);
+  border-radius: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.form-note::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: var(--bg-gradient-jet);
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.form-note ion-icon {
+  color: var(--orange-yellow-crayola);
+  font-size: 16px;
+}
+
+/* Estados del formulario */
+.form-input:focus {
+  border-color: var(--orange-yellow-crayola);
+  box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.1);
+}
+
+.form-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.form-btn:disabled:hover {
+  background: var(--border-gradient-onyx);
+}
+
+.form-btn:disabled:hover::before {
+  background: var(--bg-gradient-jet);
+}
+
+/* Mensajes de estado */
+.form-message {
+  padding: 12px;
+  border-radius: 12px;
+  margin-top: 15px;
+  text-align: center;
+  font-size: var(--fs-7);
+  display: none;
+}
+
+.form-message.success {
+  background: rgba(76, 175, 80, 0.1);
+  color: #4caf50;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  display: block;
+}
+
+.form-message.error {
+  background: rgba(244, 67, 54, 0.1);
+  color: #f44336;
+  border: 1px solid rgba(244, 67, 54, 0.3);
+  display: block;
+}
+
+/* Tema claro */
+[data-theme="light"] .contact-form-section {
+  border-top-color: var(--jet);
+}
+
+[data-theme="light"] .form-note {
+  background: var(--border-gradient-onyx);
+}
+
+[data-theme="light"] .form-note::before {
+  background: var(--bg-gradient-jet);
+}
+
+[data-theme="light"] .form-input:focus {
+  border-color: var(--orange-yellow-crayola);
+  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.1);
 }
