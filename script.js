@@ -19,7 +19,14 @@ function initTheme() {
     document.documentElement.setAttribute('data-theme', theme);
     
     if (themeToggle) themeToggle.checked = (theme === 'light');
-    if (themeText) themeText.textContent = (theme === 'light') ? 'Modo Claro' : 'Modo Oscuro';
+    
+    // Actualizar texto según idioma detectado
+    const isEnglish = document.documentElement.lang === 'en' || window.location.href.includes('index_en');
+    if (themeText) {
+      themeText.textContent = (theme === 'light') 
+        ? (isEnglish ? 'Light Mode' : 'Modo Claro')
+        : (isEnglish ? 'Dark Mode' : 'Modo Oscuro');
+    }
     
     localStorage.setItem('theme', theme);
   }
@@ -46,83 +53,22 @@ function initTheme() {
   }
 }
 
-//  GESTIÓN DE IDIOMA 
-
-// Configuración del cambio de idioma
-function initLanguage() {
-  const languageToggle = document.getElementById('language-toggle');
-  if (!languageToggle) return;
-
-  const languageText = document.querySelector('.language-text');
-  const downloadCvText = document.querySelector('.download-cv-btn span');
-  const savedLanguage = localStorage.getItem('language') || 'es';
-
-  // Actualizar contenido según idioma
-  function updateContent(language) {
-    const elements = {
-      nav: {
-        'Sobre Mí': 'About Me',
-        'Currículum': 'Resume', 
-        'Portafolio': 'Portfolio',
-        'Referencias': 'References',
-        'Contacto': 'Contact'
-      },
-      titles: {
-        'Sobre Mí': 'About Me',
-        'Currículum': 'Resume',
-        'Portafolio': 'Portfolio', 
-        'Referencias': 'References',
-        'Contacto': 'Contact'
-      }
-    };
-
-    // Actualizar navegación
-    document.querySelectorAll('[data-nav-link]').forEach(link => {
-      const text = link.textContent.trim();
-      if (elements.nav[text]) {
-        link.textContent = language === 'en' ? elements.nav[text] : text;
-      }
-    });
-
-    // Actualizar títulos
-    document.querySelectorAll('.article-title').forEach(title => {
-      const text = title.textContent.trim();
-      if (elements.titles[text]) {
-        title.textContent = language === 'en' ? elements.titles[text] : text;
-      }
-    });
-
-    // Actualizar textos de controles
-    if (languageText) {
-      languageText.textContent = language === 'en' ? 'English' : 'Español';
-    }
-    if (downloadCvText) {
-      downloadCvText.textContent = language === 'en' ? 'Download CV' : 'Descargar CV';
-    }
-  }
-
-  // Manejar cambio de idioma
-  function handleLanguageChange() {
-    const currentLang = document.documentElement.getAttribute('data-language');
-    const newLang = currentLang === 'es' ? 'en' : 'es';
-    
-    document.documentElement.setAttribute('data-language', newLang);
-    localStorage.setItem('language', newLang);
-    updateContent(newLang);
-  }
-
-  // Inicializar
-  document.documentElement.setAttribute('data-language', savedLanguage);
-  updateContent(savedLanguage);
-  languageToggle.addEventListener('click', handleLanguageChange);
-}
-
 //  PORTFOLIO 
 
 // Cargar proyectos del portfolio
 async function loadPortfolio() {
   try {
-    const response = await fetch('./portfolio.json');
+    // Determinar qué archivo JSON cargar basado en la página actual
+    let portfolioPath;
+    if (typeof portfolioFile !== 'undefined') {
+      portfolioPath = portfolioFile;
+    } else {
+      // Detectar automáticamente basado en la URL o lang attribute
+      const isEnglish = document.documentElement.lang === 'en' || window.location.href.includes('index_en');
+      portfolioPath = isEnglish ? './portfolio_en.json' : './portfolio_es.json';
+    }
+    
+    const response = await fetch(portfolioPath);
     const data = await response.json();
     portfolioData = data.projects;
     displayPortfolio(portfolioData);
@@ -192,30 +138,32 @@ function getMediaContent(project) {
       `;
     
     case 'pdf':
+      const isEnglish = document.documentElement.lang === 'en' || window.location.href.includes('index_en');
       return `
         <div class="pdf-preview">
           <ion-icon name="document-text-outline" class="pdf-icon"></ion-icon>
           <div class="pdf-preview-info">
             <div class="pdf-preview-title">${project.title}</div>
-            <div class="pdf-preview-text">Documento PDF</div>
+            <div class="pdf-preview-text">${isEnglish ? 'PDF Document' : 'Documento PDF'}</div>
           </div>
         </div>
       `;
     
     case '3d':
+      const isEnglish3d = document.documentElement.lang === 'en' || window.location.href.includes('index_en');
       return project.preview ? `
         <div class="image-container">
           <img src="${project.preview}" alt="${project.title}" loading="lazy"
                onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'model3d-preview\\'>
                <ion-icon name=\\'cube-outline\\' class=\\'model3d-icon\\'></ion-icon><div class=\\'model3d-preview-info\\'>
-               <div class=\\'model3d-preview-title\\'>${project.title}</div><div class=\\'model3d-preview-text\\'>Modelo 3D</div></div></div>'">
+               <div class=\\'model3d-preview-title\\'>${project.title}</div><div class=\\'model3d-preview-text\\'>${isEnglish3d ? '3D Model' : 'Modelo 3D'}</div></div></div>'">
         </div>
       ` : `
         <div class="model3d-preview">
           <ion-icon name="cube-outline" class="model3d-icon"></ion-icon>
           <div class="model3d-preview-info">
             <div class="model3d-preview-title">${project.title}</div>
-            <div class="model3d-preview-text">Modelo 3D</div>
+            <div class="model3d-preview-text">${isEnglish3d ? '3D Model' : 'Modelo 3D'}</div>
           </div>
         </div>
       `;
@@ -225,7 +173,7 @@ function getMediaContent(project) {
         <div class="image-container">
           <img src="${project.image}" alt="${project.title}" loading="lazy"
                onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'media-error\\'><ion-icon name=\\'image-outline\\'>
-               </ion-icon><p>Error cargando imagen</p></div>'">
+               </ion-icon><p>${document.documentElement.lang === 'en' ? 'Error loading image' : 'Error cargando imagen'}</p></div>'">
         </div>
       `;
   }
@@ -233,13 +181,15 @@ function getMediaContent(project) {
 
 // Obtener nombre traducido de categoría
 function getCategoryName(category) {
-  const currentLang = document.documentElement.getAttribute('data-language') || 'es';
+  const isEnglish = document.documentElement.lang === 'en' || window.location.href.includes('index_en');
+  
   const categories = {
-    'ilustracion-digital': currentLang === 'es' ? 'Ilustración Digital' : 'Digital Illustration',
-    'diseno-grafico': currentLang === 'es' ? 'Diseño Gráfico' : 'Graphic Design',
-    'animacion-digital': currentLang === 'es' ? 'Animación Digital' : 'Digital Animation',
-    'fotografia': currentLang === 'es' ? 'Fotografía' : 'Photography',
-    'desarrollo-web': currentLang === 'es' ? 'Desarrollo Web' : 'Web Development'
+    'ilustracion-digital': isEnglish ? 'Digital Illustration' : 'Ilustración Digital',
+    'diseno-grafico': isEnglish ? 'Graphic Design' : 'Diseño Gráfico',
+    'animacion-digital': isEnglish ? 'Digital Animation' : 'Animación Digital',
+    'fotografia': isEnglish ? 'Photography' : 'Fotografía',
+    'desarrollo-web': isEnglish ? 'Web Development' : 'Desarrollo Web',
+    'realidad-aumentada': isEnglish ? 'Augmented Reality' : 'Realidad Aumentada'
   };
   
   return categories[category] || category;
@@ -298,6 +248,11 @@ function openProjectModal(projectId) {
   // Configurar contenido multimedia
   setupModalMedia(modalMedia, project);
   modal.classList.add('active');
+  
+  // Prevenir que el clic en el modal interno cierre el modal
+  modal.querySelector('.portfolio-modal').addEventListener('click', function(e) {
+    e.stopPropagation();
+  });
 }
 
 // Configurar contenido multimedia del modal
@@ -336,6 +291,8 @@ function setupVideoModal(container, project) {
 
 // Configurar PDF en modal
 function setupPdfModal(container, project) {
+  const isEnglish = document.documentElement.lang === 'en' || window.location.href.includes('index_en');
+  
   const pdfContainer = document.createElement('div');
   pdfContainer.className = 'modal-media-content';
   
@@ -344,7 +301,7 @@ function setupPdfModal(container, project) {
   downloadBtn.className = 'pdf-download-btn';
   downloadBtn.href = project.pdf;
   downloadBtn.download = `${project.title}.pdf`;
-  downloadBtn.innerHTML = '<ion-icon name="download-outline"></ion-icon> Descargar PDF';
+  downloadBtn.innerHTML = `<ion-icon name="download-outline"></ion-icon> ${isEnglish ? 'Download PDF' : 'Descargar PDF'}`;
   
   // Visor PDF
   const pdfViewer = document.createElement('iframe');
@@ -358,6 +315,8 @@ function setupPdfModal(container, project) {
 
 // Configurar modelo 3D en modal
 function setup3dModal(container, project) {
+  const isEnglish = document.documentElement.lang === 'en' || window.location.href.includes('index_en');
+  
   const modelContainer = document.createElement('div');
   modelContainer.className = 'modal-media-content';
   
@@ -366,7 +325,7 @@ function setup3dModal(container, project) {
   downloadBtn.className = 'model3d-download-btn';
   downloadBtn.href = project.model3d;
   downloadBtn.download = `${project.title}.3ds`;
-  downloadBtn.innerHTML = '<ion-icon name="download-outline"></ion-icon> Descargar Modelo 3D';
+  downloadBtn.innerHTML = `<ion-icon name="download-outline"></ion-icon> ${isEnglish ? 'Download 3D Model' : 'Descargar Modelo 3D'}`;
   
   // Vista previa
   const preview = document.createElement('div');
@@ -382,7 +341,7 @@ function setup3dModal(container, project) {
     preview.innerHTML = `
       <div class="model3d-placeholder">
         <ion-icon name="cube-outline"></ion-icon>
-        <h4>Modelo 3D</h4>
+        <h4>${isEnglish ? '3D Model' : 'Modelo 3D'}</h4>
         <p>${project.title}</p>
       </div>
     `;
@@ -393,13 +352,152 @@ function setup3dModal(container, project) {
   container.appendChild(modelContainer);
 }
 
-// Configurar imagen en modal
+// Configurar imagen en modal CON FUNCIONALIDAD DE LUPA
 function setupImageModal(container, project) {
+  const imgContainer = document.createElement('div');
+  imgContainer.className = 'modal-image-container';
+  imgContainer.style.position = 'relative';
+
   const img = document.createElement('img');
   img.src = project.image;
   img.alt = project.title;
-  img.style.cssText = 'width:100%; height:auto; border-radius:12px;';
-  container.appendChild(img);
+  img.style.cssText = 'width:100%; height:auto; border-radius:12px; cursor: zoom-in;';
+  
+  // Agregar funcionalidad de zoom al hacer clic en la imagen
+  img.addEventListener('click', function() {
+    openImageZoom(project.image, project.title);
+  });
+
+  // Botón de lupa
+  const zoomBtn = document.createElement('button');
+  zoomBtn.className = 'image-zoom-btn';
+  zoomBtn.innerHTML = '<ion-icon name="search-outline"></ion-icon>';
+  zoomBtn.style.cssText = `
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    z-index: 10;
+  `;
+
+  zoomBtn.addEventListener('mouseenter', () => {
+    zoomBtn.style.background = 'rgba(0, 0, 0, 0.9)';
+    zoomBtn.style.transform = 'scale(1.1)';
+  });
+
+  zoomBtn.addEventListener('mouseleave', () => {
+    zoomBtn.style.background = 'rgba(0, 0, 0, 0.7)';
+    zoomBtn.style.transform = 'scale(1)';
+  });
+
+  // Al hacer clic en la lupa, abrir imagen en zoom
+  zoomBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    openImageZoom(project.image, project.title);
+  });
+
+  imgContainer.appendChild(img);
+  imgContainer.appendChild(zoomBtn);
+  container.appendChild(imgContainer);
+}
+
+// Función para abrir imagen en zoom completo
+function openImageZoom(imageSrc, title) {
+  // Crear overlay de zoom
+  const zoomOverlay = document.createElement('div');
+  zoomOverlay.className = 'zoom-overlay';
+  zoomOverlay.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    cursor: zoom-out;
+  `;
+
+  const zoomImg = document.createElement('img');
+  zoomImg.src = imageSrc;
+  zoomImg.alt = title;
+  zoomImg.style.cssText = `
+    max-width: 95%;
+    max-height: 95%;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  `;
+
+  const closeBtn = document.createElement('button');
+  closeBtn.innerHTML = '<ion-icon name="close-outline"></ion-icon>';
+  closeBtn.style.cssText = `
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    z-index: 10001;
+  `;
+
+  closeBtn.addEventListener('mouseenter', () => {
+    closeBtn.style.background = 'rgba(0, 0, 0, 0.8)';
+    closeBtn.style.transform = 'scale(1.1)';
+  });
+
+  closeBtn.addEventListener('mouseleave', () => {
+    closeBtn.style.background = 'rgba(0, 0, 0, 0.5)';
+    closeBtn.style.transform = 'scale(1)';
+  });
+
+  // Función para cerrar el zoom
+  function closeZoom() {
+    document.body.removeChild(zoomOverlay);
+    document.removeEventListener('keydown', handleKeyDown);
+  }
+
+  // Cerrar con tecla ESC
+  function handleKeyDown(e) {
+    if (e.key === 'Escape') {
+      closeZoom();
+    }
+  }
+
+  closeBtn.addEventListener('click', closeZoom);
+  zoomOverlay.addEventListener('click', (e) => {
+    if (e.target === zoomOverlay) {
+      closeZoom();
+    }
+  });
+
+  document.addEventListener('keydown', handleKeyDown);
+
+  zoomOverlay.appendChild(zoomImg);
+  zoomOverlay.appendChild(closeBtn);
+  document.body.appendChild(zoomOverlay);
 }
 
 // Cerrar modal
@@ -520,24 +618,32 @@ function handleFormSubmit(e) {
     message: formData.get('message')
   };
   
+  // Detectar idioma para mensajes
+  const isEnglish = document.documentElement.lang === 'en' || window.location.href.includes('index_en');
+  
   // Validar datos
   if (!data.name || !data.email || !data.message) {
-    showFormMessage('Por favor completa todos los campos', 'error');
+    showFormMessage(isEnglish ? 'Please fill in all fields' : 'Por favor completa todos los campos', 'error');
     return;
   }
   
   // Mostrar estado de carga
-  submitBtn.innerHTML = '<ion-icon name="hourglass-outline"></ion-icon><span>Enviando...</span>';
+  submitBtn.innerHTML = `<ion-icon name="hourglass-outline"></ion-icon><span>${isEnglish ? 'Sending...' : 'Enviando...'}</span>`;
   submitBtn.disabled = true;
   
   // Enviar correo usando mailto (solución simple)
-  sendEmail(data, submitBtn, originalText);
+  sendEmail(data, submitBtn, originalText, isEnglish);
 }
 
 // Enviar correo usando mailto
-function sendEmail(data, submitBtn, originalText) {
-  const subject = `Nuevo mensaje de ${data.name} desde tu portfolio`;
-  const body = `Nombre: ${data.name}%0D%0AEmail: ${data.email}%0D%0A%0D%0AMensaje:%0D%0A${data.message}`;
+function sendEmail(data, submitBtn, originalText, isEnglish) {
+  const subject = isEnglish 
+    ? `New message from ${data.name} from your portfolio`
+    : `Nuevo mensaje de ${data.name} desde tu portfolio`;
+  
+  const body = isEnglish
+    ? `Name: ${data.name}%0D%0AEmail: ${data.email}%0D%0A%0D%0AMessage:%0D%0A${data.message}`
+    : `Nombre: ${data.name}%0D%0AEmail: ${data.email}%0D%0A%0D%0AMensaje:%0D%0A${data.message}`;
   
   const mailtoLink = `mailto:jtroncosoart@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   
@@ -546,11 +652,11 @@ function sendEmail(data, submitBtn, originalText) {
   
   setTimeout(() => {
     if (mailWindow && !mailWindow.closed) {
-      showFormMessage('¡Mensaje enviado! Te responderé pronto.', 'success');
+      showFormMessage(isEnglish ? 'Message sent! I will reply soon.' : '¡Mensaje enviado! Te responderé pronto.', 'success');
       document.getElementById('contact-form').reset();
     } else {
       window.location.href = mailtoLink;
-      showFormMessage('Cliente de correo abierto. Completa el envío allí.', 'success');
+      showFormMessage(isEnglish ? 'Email client opened. Complete the sending there.' : 'Cliente de correo abierto. Completa el envío allí.', 'success');
       document.getElementById('contact-form').reset();
     }
     
@@ -604,17 +710,18 @@ function initFormValidation() {
 // Validar campo individual
 function validateField(field) {
   const value = field.value.trim();
+  const isEnglish = document.documentElement.lang === 'en' || window.location.href.includes('index_en');
   
   if (field.type === 'email' && value) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(value)) {
-      showFieldError(field, 'Por favor ingresa un email válido');
+      showFieldError(field, isEnglish ? 'Please enter a valid email' : 'Por favor ingresa un email válido');
       return false;
     }
   }
   
   if (field.required && !value) {
-    showFieldError(field, 'Este campo es requerido');
+    showFieldError(field, isEnglish ? 'This field is required' : 'Este campo es requerido');
     return false;
   }
   
@@ -652,7 +759,6 @@ function clearFieldError(field) {
 //  INICIALIZACIÓN 
 document.addEventListener('DOMContentLoaded', function() {
   initTheme();
-  initLanguage();
   loadPortfolio();
   initNavigation();
   initContactForm();
@@ -666,10 +772,32 @@ document.addEventListener('DOMContentLoaded', function() {
     sidebarBtn.addEventListener('click', () => toggleElement(sidebar));
   }
 
-  // Cerrar modal
-  const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
+  // Cerrar modal al hacer clic fuera (overlay) o con ESC
+  const modalContainer = document.getElementById('portfolio-modal');
   const overlay = document.querySelector("[data-overlay]");
+  const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
   
-  if (modalCloseBtn) modalCloseBtn.addEventListener("click", closeModal);
-  if (overlay) overlay.addEventListener("click", closeModal);
+  if (overlay) {
+    overlay.addEventListener("click", closeModal);
+  }
+  
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener("click", closeModal);
+  }
+  
+  // Cerrar modal con tecla ESC
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modalContainer.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+  // Cerrar modal al hacer clic en el overlay del modal
+  if (modalContainer) {
+    modalContainer.addEventListener('click', function(e) {
+      if (e.target === modalContainer) {
+        closeModal();
+      }
+    });
+  }
 });

@@ -3223,3 +3223,77 @@ textarea.form-input::-webkit-resizer { display: none; }
   border-color: var(--orange-yellow-crayola);
   box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.1);
 }
+/*-----------------------------------*\
+  #IMAGE ZOOM FUNCTIONALITY
+\*-----------------------------------*/
+
+/* Botón de lupa en modal */
+.image-zoom-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.image-zoom-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: scale(1.1);
+}
+
+/* Overlay de zoom */
+.zoom-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  cursor: zoom-out;
+}
+
+.zoom-overlay img {
+  max-width: 95%;
+  max-height: 95%;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Contenedor de imagen en modal */
+.modal-image-container {
+  position: relative;
+  cursor: zoom-in;
+}
+
+.modal-image-container img {
+  transition: transform 0.3s ease;
+}
+
+.modal-image-container:hover img {
+  transform: scale(1.02);
+}
+
+/* Asegurar que el modal no se cierre al hacer clic en el contenido */
+.portfolio-modal {
+  pointer-events: auto;
+}
+
+.portfolio-modal * {
+  pointer-events: auto;
+}
