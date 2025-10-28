@@ -1,48 +1,10 @@
-/*-----------------------------------*\
-  #style.css
-\*-----------------------------------*/
-
 :root {
-
-  /**
-   * colors
-   */
-
-  /* gradient */
-
-  --bg-gradient-onyx: linear-gradient(
-    to bottom right, 
-    hsl(240, 1%, 25%) 3%, 
-    hsl(0, 0%, 19%) 97%
-  );
-  --bg-gradient-jet: linear-gradient(
-    to bottom right, 
-    hsla(240, 1%, 18%, 0.251) 0%, 
-    hsla(240, 2%, 11%, 0) 100%
-  ), hsl(240, 2%, 13%);
-  --bg-gradient-yellow-1: linear-gradient(
-    to bottom right, 
-    hsl(45, 100%, 71%) 0%, 
-    hsla(36, 100%, 69%, 0) 50%
-  );
-  --bg-gradient-yellow-2: linear-gradient(
-    135deg, 
-    hsla(45, 100%, 71%, 0.251) 0%, 
-    hsla(35, 100%, 68%, 0) 59.86%
-  ), hsl(240, 2%, 13%);
-  --border-gradient-onyx: linear-gradient(
-    to bottom right, 
-    hsl(0, 0%, 25%) 0%, 
-    hsla(0, 0%, 25%, 0) 50%
-  );
-  --text-gradient-yellow: linear-gradient(
-    to right, 
-    hsl(45, 100%, 72%), 
-    hsl(35, 100%, 68%)
-  );
-
-  /* solid */
-
+  --bg-gradient-onyx: linear-gradient(to bottom right, hsl(240, 1%, 25%) 3%, hsl(0, 0%, 19%) 97%);
+  --bg-gradient-jet: linear-gradient(to bottom right, hsla(240, 1%, 18%, 0.251) 0%, hsla(240, 2%, 11%, 0) 100%), hsl(240, 2%, 13%);
+  --bg-gradient-yellow-1: linear-gradient(to bottom right, hsl(45, 100%, 71%) 0%, hsla(36, 100%, 69%, 0) 50%);
+  --bg-gradient-yellow-2: linear-gradient(135deg, hsla(45, 100%, 71%, 0.251) 0%, hsla(35, 100%, 68%, 0) 59.86%), hsl(240, 2%, 13%);
+  --border-gradient-onyx: linear-gradient(to bottom right, hsl(0, 0%, 25%) 0%, hsla(0, 0%, 25%, 0) 50%);
+  --text-gradient-yellow: linear-gradient(to right, hsl(45, 100%, 72%), hsl(35, 100%, 68%));
   --jet: hsl(0, 0%, 22%);
   --onyx: hsl(240, 1%, 17%);
   --eerie-black-1: hsl(240, 2%, 13%);
@@ -55,15 +17,7 @@
   --light-gray: hsl(0, 0%, 84%);
   --light-gray-70: hsla(0, 0%, 84%, 0.7);
   --bittersweet-shimmer: hsl(0, 43%, 51%);
-
-  /**
-   * typography
-   */
-
-  /* font-family */
   --ff-poppins: 'Poppins', sans-serif;
-
-  /* font-size */
   --fs-1: 24px;
   --fs-2: 18px;
   --fs-3: 17px;
@@ -72,34 +26,20 @@
   --fs-6: 14px;
   --fs-7: 13px;
   --fs-8: 11px;
-
-  /* font-weight */
   --fw-300: 300;
   --fw-400: 400;
   --fw-500: 500;
   --fw-600: 600;
-
-  /**
-   * shadow
-   */
-  
   --shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.25);
   --shadow-2: 0 16px 30px hsla(0, 0%, 0%, 0.25);
   --shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.25);
   --shadow-4: 0 25px 50px hsla(0, 0%, 0%, 0.15);
   --shadow-5: 0 24px 80px hsla(0, 0%, 0%, 0.25);
-
-  /**
-   * transition
-   */
-
   --transition-1: 0.25s ease;
   --transition-2: 0.5s ease-in-out;
   --transition-theme: 0.6s ease;
-
 }
 
-/* Tema Claro - CORREGIDO */
 [data-theme="light"] {
   --smoky-black: hsl(0, 0%, 98%);
   --eerie-black-1: hsl(0, 0%, 95%);
@@ -110,41 +50,16 @@
   --white-2: hsl(0, 0%, 20%);
   --light-gray: hsl(0, 0%, 35%);
   --light-gray-70: hsla(0, 0%, 35%, 0.7);
-  
-  /* Cambio de amarillo a azul DeepSeek (#1a73e8) */
   --orange-yellow-crayola: #1a73e8;
   --vegas-gold: #1a73e8;
   --text-gradient-yellow: linear-gradient(to right, #1a73e8, #1a73e8);
-  --bg-gradient-yellow-1: linear-gradient(
-    to bottom right, 
-    #1a73e8 0%, 
-    hsla(216, 81%, 50%, 0) 50%
-  );
-  --bg-gradient-yellow-2: linear-gradient(
-    135deg, 
-    hsla(216, 81%, 50%, 0.251) 0%, 
-    hsla(216, 81%, 50%, 0) 59.86%
-  ), hsl(0, 0%, 92%);
-  
-  /* Gradientes para tema claro */
-  --bg-gradient-onyx: linear-gradient(
-    to bottom right, 
-    hsl(0, 0%, 90%) 3%, 
-    hsl(0, 0%, 95%) 97%
-  );
-  --bg-gradient-jet: linear-gradient(
-    to bottom right, 
-    hsla(0, 0%, 85%, 0.251) 0%, 
-    hsla(0, 0%, 90%, 0) 100%
-  ), hsl(0, 0%, 95%);
-  --border-gradient-onyx: linear-gradient(
-    to bottom right, 
-    hsl(0, 0%, 75%) 0%, 
-    hsla(0, 0%, 75%, 0) 50%
-  );
+  --bg-gradient-yellow-1: linear-gradient(to bottom right, #1a73e8 0%, hsla(216, 81%, 50%, 0) 50%);
+  --bg-gradient-yellow-2: linear-gradient(135deg, hsla(216, 81%, 50%, 0.251) 0%, hsla(216, 81%, 50%, 0) 59.86%), hsl(0, 0%, 92%);
+  --bg-gradient-onyx: linear-gradient(to bottom right, hsl(0, 0%, 90%) 3%, hsl(0, 0%, 95%) 97%);
+  --bg-gradient-jet: linear-gradient(to bottom right, hsla(0, 0%, 85%, 0.251) 0%, hsla(0, 0%, 90%, 0) 100%), hsl(0, 0%, 95%);
+  --border-gradient-onyx: linear-gradient(to bottom right, hsl(0, 0%, 75%) 0%, hsla(0, 0%, 75%, 0) 50%);
 }
 
-/* Navbar en tema claro */
 [data-theme="light"] .navbar {
   background: hsla(0, 0%, 95%, 0.85);
   border: 1px solid var(--jet);
@@ -197,7 +112,6 @@
   color: white;
 }
 
-/* Visibilidad para tema claro */
 [data-theme="light"] .about-text,
 [data-theme="light"] .timeline-text,
 [data-theme="light"] .service-item-text,
@@ -231,7 +145,6 @@
   color: var(--orange-yellow-crayola);
 }
 
-/* Mejor contraste para elementos interactivos */
 [data-theme="light"] .form-input:focus {
   border-color: var(--orange-yellow-crayola);
   box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
@@ -245,24 +158,15 @@
   color: white;
 }
 
-/*-----------------------------------*\
-  #RESET
-\*-----------------------------------*/
-
 *, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: background-color var(--transition-theme), 
-              color var(--transition-theme), 
-              border-color var(--transition-theme), 
-              box-shadow var(--transition-theme);
+  transition: background-color var(--transition-theme), color var(--transition-theme), border-color var(--transition-theme), box-shadow var(--transition-theme);
 }
 
 a { text-decoration: none; }
-
 li { list-style: none; }
-
 img, ion-icon, a, button, time, span { display: block; }
 
 button {
@@ -286,15 +190,9 @@ input, textarea {
 }
 
 :focus { outline-color: var(--orange-yellow-crayola); }
-
 html { font-family: var(--ff-poppins); }
+body { background: var(--smoky-black); }
 
-body { 
-  background: var(--smoky-black);
-  transition: background-color var(--transition-theme), color var(--transition-theme);
-}
-
-/* Excluir elementos que no necesitan transición */
 .theme-slider,
 .theme-icon,
 .theme-checkbox,
@@ -307,7 +205,6 @@ body {
   transition: none !important;
 }
 
-/* Overlay de transición entre temas */
 .theme-transition-overlay {
   position: fixed;
   top: 0;
@@ -325,7 +222,6 @@ body {
   opacity: 1;
 }
 
-/* Efecto de difuminación para el cambio de tema */
 body::before {
   content: "";
   position: fixed;
@@ -333,10 +229,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, 
-    rgba(255,255,255,0.1) 0%, 
-    rgba(255,255,255,0.05) 50%, 
-    rgba(0,0,0,0.1) 100%);
+  background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(0,0,0,0.1) 100%);
   opacity: 0;
   pointer-events: none;
   z-index: 1000;
@@ -347,7 +240,6 @@ body.theme-changing::before {
   opacity: 1;
 }
 
-/* Para los elementos que usan gradientes, necesitamos un approach diferente */
 .sidebar,
 article,
 .navbar,
@@ -388,10 +280,7 @@ article::after,
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, 
-    transparent, 
-    rgba(255,255,255,0.1), 
-    transparent);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
   transition: left 0.8s ease;
   z-index: 1;
 }
@@ -411,10 +300,7 @@ article::after,
 [data-theme="light"] .skills-list::after,
 [data-theme="light"] .language-toggle::after,
 [data-theme="light"] .download-cv-btn::after {
-  background: linear-gradient(90deg, 
-    transparent, 
-    rgba(0,0,0,0.05), 
-    transparent);
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.05), transparent);
 }
 
 body.theme-changing .sidebar::after,
@@ -434,10 +320,6 @@ body.theme-changing .language-toggle::after,
 body.theme-changing .download-cv-btn::after {
   left: 100%;
 }
-
-/*-----------------------------------*\
-  #REUSED STYLE
-\*-----------------------------------*/
 
 .sidebar,
 article {
@@ -481,37 +363,23 @@ article {
 }
 
 .icon-box ion-icon { --ionicon-stroke-width: 35px; }
-
 article { display: none; }
-
-article.active {
-  display: block;
-  animation: fade 0.5s ease backwards;
-}
+article.active { display: block; }
 
 @keyframes fade {
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
 
-.h2,
-.h3,
-.h4,
-.h5 {
+.h2, .h3, .h4, .h5 {
   color: var(--white-2);
   text-transform: capitalize;
 }
 
 .h2 { font-size: var(--fs-1); }
-
 .h3 { font-size: var(--fs-2); }
-
 .h4 { font-size: var(--fs-4); }
-
-.h5 {
-  font-size: var(--fs-7);
-  font-weight: var(--fw-500);
-}
+.h5 { font-size: var(--fs-7); font-weight: var(--fw-500); }
 
 .article-title {
   position: relative;
@@ -530,8 +398,8 @@ article.active {
 }
 
 .has-scrollbar::-webkit-scrollbar {
-  width: 5px; /* for vertical scrollbar */
-  height: 5px; /* for horizontal scrollbar */
+  width: 5px;
+  height: 5px;
 }
 
 .has-scrollbar::-webkit-scrollbar-track {
@@ -566,19 +434,11 @@ article.active {
   z-index: -1;
 }
 
-/*-----------------------------------*\
-  #MAIN
-\*-----------------------------------*/
-
 main {
   margin: 15px 12px;
   margin-bottom: 75px;
   min-width: 259px;
 }
-
-/*-----------------------------------*\
-  #SIDEBAR CONTROLS
-\*-----------------------------------*/
 
 .sidebar-controls {
   display: flex;
@@ -587,7 +447,6 @@ main {
   margin-top: 20px;
 }
 
-/* Theme Toggle */
 .theme-toggle-container {
   width: 100%;
 }
@@ -694,7 +553,6 @@ main {
   color: var(--smoky-black);
 }
 
-/* Language Toggle */
 .language-toggle-container {
   width: 100%;
 }
@@ -747,7 +605,6 @@ main {
   font-size: 16px;
 }
 
-/* Download CV Button */
 .download-cv-btn {
   display: flex;
   align-items: center;
@@ -793,10 +650,6 @@ main {
   font-weight: var(--fw-500);
 }
 
-/*-----------------------------------*\
-  #SIDEBAR
-\*-----------------------------------*/
-
 .sidebar {
   margin-bottom: 15px;
   max-height: 112px;
@@ -814,7 +667,6 @@ main {
   gap: 15px;
 }
 
-/* Efecto Flip - Versión Simplificada y Corregida */
 .avatar-box {
   background: var(--bg-gradient-onyx);
   border-radius: 20px;
@@ -852,7 +704,6 @@ main {
   transform: rotateY(180deg);
 }
 
-/* El resto del CSS permanece igual */
 .info-content .name {
   color: var(--white-2);
   font-size: var(--fs-3);
@@ -962,10 +813,6 @@ main {
 
 .social-item .social-link:hover { color: var(--light-gray); }
 
-/*-----------------------------------*\
-  #RESPONSIVE MOBILE
-\*-----------------------------------*/
-
 @media screen and (max-width: 768px) {
   .sidebar-info {
     flex-direction: column;
@@ -992,7 +839,7 @@ main {
   }
   
   .sidebar.active {
-    max-height: 800px; /* Ajusta según sea necesario */
+    max-height: 800px;
   }
 }
 
@@ -1017,10 +864,6 @@ main {
     width: 100%;
   }
 }
-
-/*-----------------------------------*\
-  #NAVBAR
-\*-----------------------------------*/
 
 .navbar {
   position: fixed;
@@ -1055,10 +898,6 @@ main {
 
 .navbar-link.active { color: var(--orange-yellow-crayola); }
 
-/*-----------------------------------*\
-  #ABOUT
-\*-----------------------------------*/
-
 .about .article-title { margin-bottom: 15px; }
 
 .about-text {
@@ -1070,12 +909,7 @@ main {
 
 .about-text p { margin-bottom: 15px; }
 
-/**
- * #service 
- */
-
 .service { margin-bottom: 35px; }
-
 .service-title { margin-bottom: 20px; }
 
 .service-list {
@@ -1103,11 +937,8 @@ main {
 }
 
 .service-icon-box { margin-bottom: 10px; }
-
 .service-icon-box img { margin: auto; }
-
 .service-content-box { text-align: center; }
-
 .service-item-title { margin-bottom: 7px; }
 
 .service-item-text {
@@ -1117,12 +948,7 @@ main {
   line-height: 1.6;
 }
 
-/**
- * #testimonials 
- */
-
 .testimonials { margin-bottom: 30px; }
-
 .testimonials-title { margin-bottom: 20px; }
 
 .testimonials-list {
@@ -1167,10 +993,6 @@ main {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-
-/**
- * #testimonials-modal
- */
 
 .modal-container {
   position: fixed;
@@ -1264,7 +1086,6 @@ main {
 }
 
 .modal-img-wrapper > img { display: none; }
-
 .modal-title { margin-bottom: 4px; }
 
 .modal-content time {
@@ -1280,10 +1101,6 @@ main {
   font-weight: var(--fw-300);
   line-height: 1.6;
 }
-
-/**
- * #clients 
- */
 
 .clients { margin-bottom: 15px; }
 
@@ -1315,15 +1132,7 @@ main {
 
 .clients-item img:hover { filter: grayscale(0); }
 
-/*-----------------------------------*\
-  #RESUME
-\*-----------------------------------*/
-
 .article-title { margin-bottom: 30px; }
-
-/**
- * education and experience 
- */
 
 .timeline { margin-bottom: 30px; }
 
@@ -1340,7 +1149,6 @@ main {
 }
 
 .timeline-item { position: relative; }
-
 .timeline-item:not(:last-child) { margin-bottom: 20px; }
 
 .timeline-item-title {
@@ -1383,14 +1191,8 @@ main {
   line-height: 1.6;
 }
 
-/**
- * skills 
- */
-
 .skills-title { margin-bottom: 20px; }
-
 .skills-list { padding: 20px; }
-
 .skills-item:not(:last-child) { margin-bottom: 15px; }
 
 .skill .title-wrapper {
@@ -1418,10 +1220,6 @@ main {
   height: 100%;
   border-radius: inherit;
 }
-
-/*-----------------------------------*\
-  #PORTFOLIO
-\*-----------------------------------*/
 
 .filter-list { display: none; }
 
@@ -1526,7 +1324,6 @@ main {
 
 .project-item-icon-box {
   --scale: 0.8;
-
   background: var(--jet);
   color: var(--orange-yellow-crayola);
   position: absolute;
@@ -1574,7 +1371,6 @@ main {
   font-weight: var(--fw-300);
 }
 
-/* Portfolio Modal */
 .portfolio-modal {
   background: var(--eerie-black-2);
   position: relative;
@@ -1657,14 +1453,12 @@ main {
   font-weight: var(--fw-500);
 }
 
-/* Video projects */
 .project-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* Responsive modal */
 @media (min-width: 768px) {
   .modal-content-wrapper {
     grid-template-columns: 1fr 1fr;
@@ -1680,10 +1474,6 @@ main {
     width: 85%;
   }
 }
-
-/*-----------------------------------*\
-  #BLOG
-\*-----------------------------------*/
 
 .blog-posts { margin-bottom: 10px; }
 
@@ -1765,10 +1555,6 @@ main {
   line-height: 1.6;
 }
 
-/*-----------------------------------*\
-  #REFERENCES
-\*-----------------------------------*/
-
 .references-list {
   display: grid;
   grid-template-columns: 1fr;
@@ -1801,12 +1587,7 @@ main {
   color: var(--orange-yellow-crayola);
 }
 
-/*-----------------------------------*\
-  #CONTACT
-\*-----------------------------------*/
-
 .contact-form { margin-bottom: 10px; }
-
 .form-title { margin-bottom: 20px; }
 
 .input-wrapper {
@@ -1827,7 +1608,6 @@ main {
 }
 
 .form-input::placeholder { font-weight: var(--fw-500); }
-
 .form-input:focus { border-color: var(--orange-yellow-crayola); }
 
 textarea.form-input {
@@ -1839,7 +1619,6 @@ textarea.form-input {
 }
 
 textarea.form-input::-webkit-resizer { display: none; }
-
 .form-input:focus:invalid { border-color: var(--bittersweet-shimmer); }
 
 .form-btn {
@@ -1871,9 +1650,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 }
 
 .form-btn ion-icon { font-size: 16px; }
-
 .form-btn:hover { background: var(--bg-gradient-yellow-1); }
-
 .form-btn:hover::before { background: var(--bg-gradient-yellow-2); }
 
 .form-btn:disabled {
@@ -1882,10 +1659,8 @@ textarea.form-input::-webkit-resizer { display: none; }
 }
 
 .form-btn:disabled:hover { background: var(--border-gradient-onyx); }
-
 .form-btn:disabled:hover::before { background: var(--bg-gradient-jet); }
 
-/* Información de contacto */
 .contact-info {
   margin-bottom: 30px;
 }
@@ -1907,7 +1682,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   color: var(--orange-yellow-crayola);
 }
 
-/* Botones de redes sociales */
 .social-buttons {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -1946,7 +1720,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   background: var(--bg-gradient-yellow-2);
 }
 
-/* Habilidades técnicas sin barras de progreso */
 .skill-tools {
   color: var(--light-gray);
   font-size: var(--fs-6);
@@ -1963,47 +1736,14 @@ textarea.form-input::-webkit-resizer { display: none; }
   margin-bottom: 0;
 }
 
-/*-----------------------------------*\
-  #RESPONSIVE
-\*-----------------------------------*/
-
-/**
- * responsive larger than 450px screen
- */
-
 @media (min-width: 450px) {
-
-  /**
-   * client
-   */
-
   .clients-item { min-width: calc(33.33% - 10px); }
-
-  /**
-   * #PORTFOLIO, BLOG 
-   */
-
   .project-img,
   .blog-banner-box { height: auto; }
-
 }
 
-/**
- * responsive larger than 580px screen
- */
-
 @media (min-width: 580px) {
-
-  /**
-   * CUSTOM PROPERTY
-   */
-
   :root {
-
-    /**
-     * typography
-     */
-
     --fs-1: 32px;
     --fs-2: 24px;
     --fs-3: 26px;
@@ -2011,12 +1751,7 @@ textarea.form-input::-webkit-resizer { display: none; }
     --fs-6: 15px;
     --fs-7: 15px;
     --fs-8: 12px;
-
   }
-
-  /**
-   * #REUSED STYLE
-   */
 
   .sidebar, article {
     width: 520px;
@@ -2041,18 +1776,10 @@ textarea.form-input::-webkit-resizer { display: none; }
     font-size: 18px;
   }
 
-  /**
-   * #MAIN
-   */
-
   main {
     margin-top: 60px;
     margin-bottom: 100px;
   }
-
-  /**
-   * #SIDEBAR
-   */
 
   .sidebar {
     max-height: 180px;
@@ -2060,15 +1787,10 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 
   .sidebar.active { max-height: 684px; }
-
   .sidebar-info { gap: 25px; }
-
   .avatar-box { border-radius: 30px; }
-
   .avatar-box img { width: 120px; }
-
   .info-content .name { margin-bottom: 15px; }
-
   .info-content .title { padding: 5px 18px; }
 
   .info_more-btn {
@@ -2083,9 +1805,7 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 
   .info_more-btn ion-icon { display: none; }
-
   .separator { margin: 32px 0; }
-
   .contacts-list { gap: 20px; }
 
   .contact-info {
@@ -2093,25 +1813,11 @@ textarea.form-input::-webkit-resizer { display: none; }
     width: calc(100% - 64px);
   }
 
-  /**
-   * #NAVBAR
-   */
-
   .navbar { border-radius: 20px 20px 0 0; }
-
   .navbar-list { gap: 20px; }
-
   .navbar-link { --fs-8: 14px; }
-
-  /**
-   * #ABOUT
-   */
-
   .about .article-title { margin-bottom: 20px; }
-
   .about-text { margin-bottom: 40px; }
-
-  /* service */
 
   .service-item {
     display: flex;
@@ -2127,9 +1833,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 
   .service-content-box { text-align: left; }
-
-  /* testimonials */
-
   .testimonials-title { margin-bottom: 25px; }
 
   .testimonials-list {
@@ -2161,8 +1864,6 @@ textarea.form-input::-webkit-resizer { display: none; }
     -webkit-line-clamp: 2;
   }
 
-  /* testimonials modal */
-
   .modal-container { padding: 20px; }
 
   .testimonials-modal {
@@ -2193,8 +1894,6 @@ textarea.form-input::-webkit-resizer { display: none; }
     width: 35px;
   }
 
-  /* clients */
-
   .clients-list {
     gap: 50px;
     margin: 0 -30px;
@@ -2203,13 +1902,7 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 
   .clients-item { min-width: calc(33.33% - 35px); }
-
-  /**
-   * #RESUME
-   */
-
   .timeline-list { margin-left: 65px; }
-
   .timeline-item:not(:last-child)::before { left: -40px; }
 
   .timeline-item::after {
@@ -2219,20 +1912,9 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 
   .skills-item:not(:last-child) { margin-bottom: 25px; }
-
-  /**
-   * #PORTFOLIO, BLOG
-   */
-
   .project-img, .blog-banner-box { border-radius: 16px; }
-
   .blog-posts-list { gap: 30px; }
-
   .blog-content { padding: 25px; }
-
-  /**
-   * #CONTACT
-   */
 
   .input-wrapper {
     gap: 30px;
@@ -2240,7 +1922,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 
   .form-input { padding: 15px 20px; }
-
   textarea.form-input { margin-bottom: 30px; }
 
   .form-btn {
@@ -2249,43 +1930,18 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 
   .form-btn ion-icon { font-size: 18px; }
-
 }
 
-/**
- * responsive larger than 768px screen
- */
-
 @media (min-width: 768px) {
-
-  /**
-   * REUSED STYLE
-   */
-
   .sidebar, article { width: 700px; }
-
   .has-scrollbar::-webkit-scrollbar-button { width: 100px; }
-
-  /**
-   * SIDEBAR
-   */
 
   .contacts-list {
     grid-template-columns: 1fr 1fr;
     gap: 30px 15px;
   }
 
-  /**
-   * NAVBAR
-   */
-
   .navbar-link { --fs-8: 15px; }
-
-  /**
-   * ABOUT
-   */
-
-  /* testimonials modal */
 
   .testimonials-modal {
     gap: 35px;
@@ -2293,13 +1949,7 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 
   .modal-avatar-box img { width: 80px; }
-
-  /**
-   * PORTFOLIO
-   */
-
   .article-title { padding-bottom: 20px; }
-
   .filter-select-box { display: none; }
 
   .filter-list {
@@ -2318,60 +1968,23 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 
   .filter-item button:hover { color: var(--light-gray-70); }
-
   .filter-item button.active { color: var(--orange-yellow-crayola); }
-
-  /* portfolio and blog grid */
-
   .project-list, .blog-posts-list { grid-template-columns: 1fr 1fr; }
-
-  /**
-   * CONTACT
-   */
-
   .input-wrapper { grid-template-columns: 1fr 1fr; }
-
-  .form-btn {
-    width: max-content;
-    margin-left: auto;
-  }
-  
+  .form-btn { width: max-content; margin-left: auto; }
 }
 
-/**
- * responsive larger than 1024px screen
- */
-
 @media (min-width: 1024px) {
-
-  /**
-   * CUSTOM PROPERTY
-   */
-
   :root {
-
-    /**
-    * shadow
-    */
-
     --shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.125);
     --shadow-2: 0 16px 30px hsla(0, 0%, 0%, 0.125);
     --shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.125);
-
   }
-
-  /**
-   * REUSED STYLE
-   */
 
   .sidebar, article {
     width: 950px;
     box-shadow: var(--shadow-5);
   }
-
-  /**
-   * MAIN 
-   */
 
   main { margin-bottom: 60px; }
 
@@ -2380,10 +1993,6 @@ textarea.form-input::-webkit-resizer { display: none; }
     width: max-content;
     margin: auto;
   }
-
-  /**
-   * NAVBAR
-   */
 
   .navbar {
     position: absolute;
@@ -2404,51 +2013,19 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .navbar-link { font-weight: var(--fw-500); }
 
-  /**
-   * ABOUT
-   */
-
-  /* service */
-
   .service-list {
     grid-template-columns: 1fr 1fr;
     gap: 20px 25px;
   }
 
-  /* testimonials */
-
   .testimonials-item { min-width: calc(50% - 15px); }
-
-  /* clients */
-
   .clients-item { min-width: calc(25% - 38px); }
-
-  /**
-   * PORTFOLIO
-   */
-
   .project-list { grid-template-columns: repeat(3, 1fr); }
-
-  /**
-   * BLOG
-   */
-
   .blog-banner-box { height: 230px; }
-
 }
 
-/**
- * responsive larger than 1250px screen
- */
-
 @media (min-width: 1250px) {
-
-  /**
-   * RESET
-   */
-
   body::-webkit-scrollbar { width: 20px; }
-
   body::-webkit-scrollbar-track { background: var(--smoky-black); }
 
   body::-webkit-scrollbar-thumb {
@@ -2460,20 +2037,9 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 
   body::-webkit-scrollbar-thumb:hover { background: hsla(0, 0%, 100%, 0.15); }
-
   body::-webkit-scrollbar-button { height: 60px; }
-
-  /**
-   * REUSED STYLE
-   */
-
   .sidebar, article { width: auto; }
-
   article { min-height: 100%; }
-
-  /**
-   * MAIN
-   */
 
   main {
     max-width: 1200px;
@@ -2490,10 +2056,6 @@ textarea.form-input::-webkit-resizer { display: none; }
     margin: 0;
   }
 
-  /**
-   * SIDEBAR
-   */
-
   .sidebar {
     position: sticky;
     top: 60px;
@@ -2505,7 +2067,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 
   .sidebar-info { flex-direction: column; }
-
   .avatar-box img { width: 150px; }
 
   .info-content .name {
@@ -2514,18 +2075,9 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 
   .info-content .title { margin: auto; }
-
   .info_more-btn { display: none; }
-
-  .sidebar-info_more {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .sidebar-controls {
-    margin-top: 30px;
-  }
-
+  .sidebar-info_more { opacity: 1; visibility: visible; }
+  .sidebar-controls { margin-top: 30px; }
   .contacts-list { grid-template-columns: 1fr; }
 
   .contact-info :is(.contact-link) {
@@ -2545,19 +2097,9 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 
   .social-list { justify-content: center; }
-
-  /**
-	 * RESUME
-	 */
-
   .timeline-text { max-width: 700px; }
-
 }
-/*-----------------------------------*\
-  #PORTFOLIO ENHANCEMENTS
-\*-----------------------------------*/
 
-/* Fixed grid for portfolio - eliminamos masonry problemático */
 .project-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -2577,7 +2119,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 .project-img {
   position: relative;
   width: 100%;
-  height: 250px; /* Altura fija para consistencia */
+  height: 250px;
   border-radius: 16px;
   overflow: hidden;
   margin-bottom: 15px;
@@ -2589,13 +2131,12 @@ textarea.form-input::-webkit-resizer { display: none; }
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover; /* Asegura que las imágenes se recorten bien */
+  object-fit: cover;
   transition: var(--transition-1);
 }
 
-/* Mejor soporte para PNG y diferentes formatos de imagen */
 .project-img img {
-  object-fit: contain; /* Para PNG que necesitan verse completas */
+  object-fit: contain;
   background: var(--smoky-black);
 }
 
@@ -2604,7 +2145,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   background: #000;
 }
 
-/* Preview de PDF en grid */
 .pdf-preview {
   position: relative;
   width: 100%;
@@ -2641,7 +2181,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   color: var(--light-gray-70);
 }
 
-/* Enhanced Portfolio Modal */
 .portfolio-modal {
   background: var(--eerie-black-2);
   position: relative;
@@ -2685,17 +2224,15 @@ textarea.form-input::-webkit-resizer { display: none; }
   align-items: center;
 }
 
-/* Video Player Styles - MÁS GRANDES */
 .modal-video {
   width: 100%;
   height: auto;
-  min-height: 400px; /* Más alto por defecto */
-  max-height: 70vh; /* Usa más espacio vertical */
+  min-height: 400px;
+  max-height: 70vh;
   border-radius: 12px;
   background: #000;
 }
 
-/* Controles de video mejorados */
 .video-controls {
   display: flex;
   align-items: center;
@@ -2745,10 +2282,9 @@ textarea.form-input::-webkit-resizer { display: none; }
   border-radius: 2px;
 }
 
-/* PDF Viewer Styles - SIN NAVEGACIÓN */
 .pdf-viewer {
   width: 100%;
-  height: 600px; /* Más alto para mejor visualización */
+  height: 600px;
   border: none;
   border-radius: 12px;
   background: white;
@@ -2757,14 +2293,13 @@ textarea.form-input::-webkit-resizer { display: none; }
 .pdf-controls {
   display: flex;
   align-items: center;
-  justify-content: flex-end; /* Solo el botón de descargar a la derecha */
+  justify-content: flex-end;
   padding: 15px;
   background: var(--onyx);
   border-radius: 12px 12px 0 0;
   margin-bottom: -5px;
 }
 
-/* Solo mantener el botón de descargar */
 .pdf-download-btn {
   background: var(--border-gradient-onyx);
   color: var(--orange-yellow-crayola);
@@ -2800,17 +2335,15 @@ textarea.form-input::-webkit-resizer { display: none; }
   background: var(--bg-gradient-yellow-2);
 }
 
-/* Imágenes en modal más grandes */
 .modal-media img {
   width: 100%;
   height: auto;
   max-height: 70vh;
-  object-fit: contain; /* Para PNG y diferentes formatos */
+  object-fit: contain;
   border-radius: 12px;
   background: var(--smoky-black);
 }
 
-/* Responsive adjustments */
 @media (min-width: 768px) {
   .modal-content-wrapper {
     grid-template-columns: 1fr 1fr;
@@ -2826,7 +2359,6 @@ textarea.form-input::-webkit-resizer { display: none; }
     gap: 30px;
   }
   
-  /* Videos aún más grandes en desktop */
   .modal-video {
     min-height: 500px;
     max-height: 75vh;
@@ -2839,7 +2371,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 @media (min-width: 1024px) {
   .portfolio-modal {
-    max-width: 1000px; /* Modal más ancho */
+    max-width: 1000px;
   }
   
   .project-list {
@@ -2851,7 +2383,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 }
 
-/* Loading states */
 .loading-media {
   display: flex;
   align-items: center;
@@ -2882,7 +2413,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   margin-bottom: 15px;
 }
 
-/* Video thumbnail styles */
 .video-thumbnail {
   position: relative;
   width: 100%;
@@ -2912,7 +2442,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   color: var(--smoky-black);
 }
 
-/* Asegurar que las imágenes PNG se vean bien */
 .image-container {
   width: 100%;
   height: 100%;
@@ -2927,11 +2456,7 @@ textarea.form-input::-webkit-resizer { display: none; }
   max-height: 100%;
   object-fit: contain;
 }
-/*-----------------------------------*\
-  #3D MODEL SUPPORT
-\*-----------------------------------*/
 
-/* Preview de modelo 3D en grid */
 .model3d-preview {
   position: relative;
   width: 100%;
@@ -2968,7 +2493,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   color: var(--light-gray-70);
 }
 
-/* 3D Viewer en modal */
 .model3d-viewer {
   width: 100%;
   height: 500px;
@@ -3040,7 +2564,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   background: var(--bg-gradient-yellow-2);
 }
 
-/* Integración con Three.js Viewer */
 .threejs-container {
   width: 100%;
   height: 100%;
@@ -3105,7 +2628,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   font-family: monospace;
 }
 
-/* Responsive para 3D viewer */
 @media (min-width: 768px) {
   .model3d-viewer {
     height: 600px;
@@ -3117,10 +2639,6 @@ textarea.form-input::-webkit-resizer { display: none; }
     height: 700px;
   }
 }
-
-/*-----------------------------------*\
-  #CONTACT FORM
-\*-----------------------------------*/
 
 .contact-form-section {
   margin-top: 40px;
@@ -3162,7 +2680,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   font-size: 16px;
 }
 
-/* Estados del formulario */
 .form-input:focus {
   border-color: var(--orange-yellow-crayola);
   box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.1);
@@ -3182,7 +2699,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   background: var(--bg-gradient-jet);
 }
 
-/* Mensajes de estado */
 .form-message {
   padding: 12px;
   border-radius: 12px;
@@ -3206,7 +2722,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   display: block;
 }
 
-/* Tema claro */
 [data-theme="light"] .contact-form-section {
   border-top-color: var(--jet);
 }
@@ -3223,11 +2738,7 @@ textarea.form-input::-webkit-resizer { display: none; }
   border-color: var(--orange-yellow-crayola);
   box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.1);
 }
-/*-----------------------------------*\
-  #IMAGE ZOOM FUNCTIONALITY
-\*-----------------------------------*/
 
-/* Botón de lupa en modal */
 .image-zoom-btn {
   position: absolute;
   top: 15px;
@@ -3252,7 +2763,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   transform: scale(1.1);
 }
 
-/* Overlay de zoom */
 .zoom-overlay {
   position: fixed;
   top: 0;
@@ -3295,9 +2805,6 @@ textarea.form-input::-webkit-resizer { display: none; }
 .portfolio-modal * {
   pointer-events: auto;
 }
-/*-----------------------------------*\
-  #SIDEBAR MOBILE ENHANCEMENTS
-\*-----------------------------------*/
 
 @media screen and (max-width: 768px) {
   .sidebar {
@@ -3463,9 +2970,6 @@ textarea.form-input::-webkit-resizer { display: none; }
 .info_more-btn:hover::before {
   background: var(--bg-gradient-yellow-2);
 }
-/*-----------------------------------*\
-  #SOCIAL BUTTONS WITH ICONS
-\*-----------------------------------*/
 
 .social-buttons {
   display: grid;
@@ -3520,7 +3024,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   transform: scale(1.1);
 }
 
-/* Efectos específicos para cada red social */
 .social-button[href*="instagram"]:hover ion-icon {
   color: #E4405F;
 }
@@ -3533,7 +3036,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   color: #25D366;
 }
 
-/* Responsive para móviles */
 @media screen and (max-width: 768px) {
   .social-buttons {
     grid-template-columns: 1fr;
@@ -3550,7 +3052,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 }
 
-/* Para pantallas muy pequeñas */
 @media screen and (max-width: 480px) {
   .social-buttons {
     gap: 10px;
@@ -3562,11 +3063,116 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 }
 
-/* Versión en inglés - si necesitas mantener consistencia */
 [data-theme="light"] .social-button {
   background: var(--border-gradient-onyx);
 }
 
 [data-theme="light"] .social-button::before {
   background: var(--bg-gradient-jet);
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: var(--border-gradient-onyx);
+  color: var(--orange-yellow-crayola);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: var(--shadow-3);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-to-top::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: var(--bg-gradient-jet);
+  border-radius: inherit;
+  z-index: -1;
+  transition: var(--transition-1);
+}
+
+.scroll-to-top:hover {
+  background: var(--bg-gradient-yellow-1);
+  color: var(--smoky-black);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-4);
+}
+
+.scroll-to-top:hover::before {
+  background: var(--bg-gradient-yellow-2);
+}
+
+.scroll-to-top.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-to-top ion-icon {
+  transition: transform 0.3s ease;
+}
+
+.scroll-to-top:hover ion-icon {
+  transform: translateY(-2px);
+}
+
+@keyframes pulse-gentle {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 193, 7, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+  }
+}
+
+.scroll-to-top.active.pulse {
+  animation: pulse-gentle 2s infinite;
+}
+
+[data-theme="light"] .scroll-to-top {
+  background: var(--border-gradient-onyx);
+}
+
+[data-theme="light"] .scroll-to-top::before {
+  background: var(--bg-gradient-jet);
+}
+
+[data-theme="light"] .scroll-to-top:hover {
+  background: var(--bg-gradient-yellow-1);
+}
+
+@media screen and (max-width: 768px) {
+  .scroll-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .scroll-to-top {
+    bottom: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
 }

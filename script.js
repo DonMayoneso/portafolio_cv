@@ -1,26 +1,22 @@
 'use strict';
 
-// Datos globales
+// ===== DATOS GLOBALES =====
 let portfolioData = [];
 
-// Función para alternar elementos
+// ===== FUNCIONES DE UTILIDAD =====
 const toggleElement = (elem) => elem.classList.toggle("active");
 
-//  GESTIÓN DE TEMA 
-
-// Configuración del cambio de tema
+// ===== GESTIÓN DE TEMA =====
 function initTheme() {
   const themeToggle = document.getElementById('theme-checkbox');
   const themeText = document.querySelector('.theme-text');
   const savedTheme = localStorage.getItem('theme') || 'dark';
 
-  // Aplicar tema guardado
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     
     if (themeToggle) themeToggle.checked = (theme === 'light');
     
-    // Actualizar texto según idioma detectado
     const isEnglish = document.documentElement.lang === 'en' || window.location.href.includes('index_en');
     if (themeText) {
       themeText.textContent = (theme === 'light') 
@@ -31,7 +27,6 @@ function initTheme() {
     localStorage.setItem('theme', theme);
   }
 
-  // Cambiar tema con transición
   function handleThemeChange() {
     document.body.classList.add('theme-changing');
     
@@ -45,7 +40,6 @@ function initTheme() {
     }, 50);
   }
 
-  // Inicializar
   applyTheme(savedTheme);
   
   if (themeToggle) {
@@ -53,17 +47,13 @@ function initTheme() {
   }
 }
 
-//  PORTFOLIO 
-
-// Cargar proyectos del portfolio
+// ===== PORTFOLIO =====
 async function loadPortfolio() {
   try {
-    // Determinar qué archivo JSON cargar basado en la página actual
     let portfolioPath;
     if (typeof portfolioFile !== 'undefined') {
       portfolioPath = portfolioFile;
     } else {
-      // Detectar automáticamente basado en la URL o lang attribute
       const isEnglish = document.documentElement.lang === 'en' || window.location.href.includes('index_en');
       portfolioPath = isEnglish ? './portfolio_en.json' : './portfolio_es.json';
     }
@@ -81,7 +71,6 @@ async function loadPortfolio() {
   }
 }
 
-// Mostrar proyectos en la grid
 function displayPortfolio(projects) {
   const projectList = document.getElementById('project-list');
   if (!projectList) return;
@@ -93,14 +82,12 @@ function displayPortfolio(projects) {
     projectList.appendChild(projectItem);
   });
 
-  // Configurar eventos después de crear los elementos
   setTimeout(() => {
     initVideoThumbnails();
     initProjectLinks();
   }, 100);
 }
 
-// Crear elemento de proyecto
 function createProjectItem(project) {
   const projectItem = document.createElement('li');
   projectItem.className = 'project-item active';
@@ -125,7 +112,6 @@ function createProjectItem(project) {
   return projectItem;
 }
 
-// Obtener contenido multimedia según tipo
 function getMediaContent(project) {
   switch (project.type) {
     case 'video':
@@ -154,9 +140,7 @@ function getMediaContent(project) {
       return project.preview ? `
         <div class="image-container">
           <img src="${project.preview}" alt="${project.title}" loading="lazy"
-               onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'model3d-preview\\'>
-               <ion-icon name=\\'cube-outline\\' class=\\'model3d-icon\\'></ion-icon><div class=\\'model3d-preview-info\\'>
-               <div class=\\'model3d-preview-title\\'>${project.title}</div><div class=\\'model3d-preview-text\\'>${isEnglish3d ? '3D Model' : 'Modelo 3D'}</div></div></div>'">
+               onerror="handleImageError(this, '${project.title}', '3d', ${isEnglish3d})">
         </div>
       ` : `
         <div class="model3d-preview">
@@ -172,14 +156,39 @@ function getMediaContent(project) {
       return `
         <div class="image-container">
           <img src="${project.image}" alt="${project.title}" loading="lazy"
-               onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'media-error\\'><ion-icon name=\\'image-outline\\'>
-               </ion-icon><p>${document.documentElement.lang === 'en' ? 'Error loading image' : 'Error cargando imagen'}</p></div>'">
+               onerror="handleImageError(this, '${project.title}', 'image')">
         </div>
       `;
   }
 }
 
-// Obtener nombre traducido de categoría
+function handleImageError(element, title, type, isEnglish = null) {
+  if (isEnglish === null) {
+    isEnglish = document.documentElement.lang === 'en' || window.location.href.includes('index_en');
+  }
+  
+  element.style.display = 'none';
+  
+  if (type === '3d') {
+    element.parentElement.innerHTML = `
+      <div class="model3d-preview">
+        <ion-icon name="cube-outline" class="model3d-icon"></ion-icon>
+        <div class="model3d-preview-info">
+          <div class="model3d-preview-title">${title}</div>
+          <div class="model3d-preview-text">${isEnglish ? '3D Model' : 'Modelo 3D'}</div>
+        </div>
+      </div>
+    `;
+  } else {
+    element.parentElement.innerHTML = `
+      <div class="media-error">
+        <ion-icon name="image-outline"></ion-icon>
+        <p>${isEnglish ? 'Error loading image' : 'Error cargando imagen'}</p>
+      </div>
+    `;
+  }
+}
+
 function getCategoryName(category) {
   const isEnglish = document.documentElement.lang === 'en' || window.location.href.includes('index_en');
   
@@ -195,14 +204,12 @@ function getCategoryName(category) {
   return categories[category] || category;
 }
 
-// Inicializar miniaturas de video
 function initVideoThumbnails() {
   document.querySelectorAll('.video-thumbnail video').forEach(video => {
     video.load();
   });
 }
 
-// Configurar eventos para abrir modal
 function initProjectLinks() {
   document.querySelectorAll('.project-link').forEach(link => {
     link.addEventListener('click', function(e) {
@@ -213,9 +220,7 @@ function initProjectLinks() {
   });
 }
 
-//  MODAL 
-
-// Abrir modal de proyecto
+// ===== MODAL =====
 function openProjectModal(projectId) {
   const project = portfolioData.find(p => p.id === projectId);
   if (!project) return;
@@ -227,7 +232,6 @@ function openProjectModal(projectId) {
   const modalDescription = document.getElementById('modal-description');
   const modalTechnologies = document.getElementById('modal-technologies');
 
-  // Limpiar y configurar contenido
   modalMedia.innerHTML = '';
   modalTechnologies.innerHTML = '';
 
@@ -235,7 +239,6 @@ function openProjectModal(projectId) {
   modalCategory.textContent = getCategoryName(project.category);
   modalDescription.textContent = project.description;
 
-  // Agregar tecnologías
   if (project.technologies) {
     project.technologies.forEach(tech => {
       const techSpan = document.createElement('span');
@@ -245,17 +248,14 @@ function openProjectModal(projectId) {
     });
   }
 
-  // Configurar contenido multimedia
   setupModalMedia(modalMedia, project);
   modal.classList.add('active');
   
-  // Prevenir que el clic en el modal interno cierre el modal
   modal.querySelector('.portfolio-modal').addEventListener('click', function(e) {
     e.stopPropagation();
   });
 }
 
-// Configurar contenido multimedia del modal
 function setupModalMedia(container, project) {
   switch (project.type) {
     case 'video':
@@ -272,7 +272,6 @@ function setupModalMedia(container, project) {
   }
 }
 
-// Configurar video en modal
 function setupVideoModal(container, project) {
   const video = document.createElement('video');
   video.className = 'modal-video';
@@ -289,21 +288,18 @@ function setupVideoModal(container, project) {
   container.appendChild(video);
 }
 
-// Configurar PDF en modal
 function setupPdfModal(container, project) {
   const isEnglish = document.documentElement.lang === 'en' || window.location.href.includes('index_en');
   
   const pdfContainer = document.createElement('div');
   pdfContainer.className = 'modal-media-content';
   
-  // Botón de descarga
   const downloadBtn = document.createElement('a');
   downloadBtn.className = 'pdf-download-btn';
   downloadBtn.href = project.pdf;
   downloadBtn.download = `${project.title}.pdf`;
   downloadBtn.innerHTML = `<ion-icon name="download-outline"></ion-icon> ${isEnglish ? 'Download PDF' : 'Descargar PDF'}`;
   
-  // Visor PDF
   const pdfViewer = document.createElement('iframe');
   pdfViewer.className = 'pdf-viewer';
   pdfViewer.src = project.pdf;
@@ -313,21 +309,18 @@ function setupPdfModal(container, project) {
   container.appendChild(pdfContainer);
 }
 
-// Configurar modelo 3D en modal
 function setup3dModal(container, project) {
   const isEnglish = document.documentElement.lang === 'en' || window.location.href.includes('index_en');
   
   const modelContainer = document.createElement('div');
   modelContainer.className = 'modal-media-content';
   
-  // Botón de descarga
   const downloadBtn = document.createElement('a');
   downloadBtn.className = 'model3d-download-btn';
   downloadBtn.href = project.model3d;
   downloadBtn.download = `${project.title}.3ds`;
   downloadBtn.innerHTML = `<ion-icon name="download-outline"></ion-icon> ${isEnglish ? 'Download 3D Model' : 'Descargar Modelo 3D'}`;
   
-  // Vista previa
   const preview = document.createElement('div');
   preview.className = 'model3d-viewer';
   
@@ -352,7 +345,6 @@ function setup3dModal(container, project) {
   container.appendChild(modelContainer);
 }
 
-// Configurar imagen en modal CON FUNCIONALIDAD DE LUPA
 function setupImageModal(container, project) {
   const imgContainer = document.createElement('div');
   imgContainer.className = 'modal-image-container';
@@ -363,12 +355,10 @@ function setupImageModal(container, project) {
   img.alt = project.title;
   img.style.cssText = 'width:100%; height:auto; border-radius:12px; cursor: zoom-in;';
   
-  // Agregar funcionalidad de zoom al hacer clic en la imagen
   img.addEventListener('click', function() {
     openImageZoom(project.image, project.title);
   });
 
-  // Botón de lupa
   const zoomBtn = document.createElement('button');
   zoomBtn.className = 'image-zoom-btn';
   zoomBtn.innerHTML = '<ion-icon name="search-outline"></ion-icon>';
@@ -401,7 +391,6 @@ function setupImageModal(container, project) {
     zoomBtn.style.transform = 'scale(1)';
   });
 
-  // Al hacer clic en la lupa, abrir imagen en zoom
   zoomBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     openImageZoom(project.image, project.title);
@@ -412,9 +401,7 @@ function setupImageModal(container, project) {
   container.appendChild(imgContainer);
 }
 
-// Función para abrir imagen en zoom completo
 function openImageZoom(imageSrc, title) {
-  // Crear overlay de zoom
   const zoomOverlay = document.createElement('div');
   zoomOverlay.className = 'zoom-overlay';
   zoomOverlay.style.cssText = `
@@ -473,13 +460,11 @@ function openImageZoom(imageSrc, title) {
     closeBtn.style.transform = 'scale(1)';
   });
 
-  // Función para cerrar el zoom
   function closeZoom() {
     document.body.removeChild(zoomOverlay);
     document.removeEventListener('keydown', handleKeyDown);
   }
 
-  // Cerrar con tecla ESC
   function handleKeyDown(e) {
     if (e.key === 'Escape') {
       closeZoom();
@@ -500,28 +485,23 @@ function openImageZoom(imageSrc, title) {
   document.body.appendChild(zoomOverlay);
 }
 
-// Cerrar modal
 function closeModal() {
   const modal = document.getElementById('portfolio-modal');
   modal.classList.remove('active');
   
-  // Limpiar reproductores
   modal.querySelectorAll('video').forEach(video => {
     video.pause();
     video.currentTime = 0;
   });
 }
 
-//  FILTROS 
-
-// Inicializar sistema de filtros
+// ===== FILTROS =====
 function initFilters() {
   const filterBtns = document.querySelectorAll("[data-filter-btn]");
   const selectItems = document.querySelectorAll("[data-select-item]");
   const selectValue = document.querySelector("[data-select-value]");
   const select = document.querySelector("[data-select]");
 
-  // Aplicar filtro
   function applyFilter(selectedValue) {
     document.querySelectorAll("[data-filter-item]").forEach(item => {
       const showItem = selectedValue === "todos" || selectedValue === item.dataset.category;
@@ -531,7 +511,6 @@ function initFilters() {
 
   let activeFilter = document.querySelector('[data-filter-btn].active');
 
-  // Eventos para botones de filtro
   filterBtns.forEach(btn => {
     btn.addEventListener("click", function () {
       const selectedValue = this.getAttribute('data-category');
@@ -545,7 +524,6 @@ function initFilters() {
     });
   });
 
-  // Eventos para select móvil
   selectItems.forEach(item => {
     item.addEventListener("click", function () {
       const selectedValue = this.getAttribute('data-category');
@@ -554,7 +532,6 @@ function initFilters() {
       toggleElement(select);
       applyFilter(selectedValue);
 
-      // Activar botón correspondiente
       const correspondingBtn = document.querySelector(`[data-filter-btn][data-category="${selectedValue}"]`);
       if (correspondingBtn) {
         filterBtns.forEach(btn => btn.classList.remove('active'));
@@ -564,15 +541,12 @@ function initFilters() {
     });
   });
 
-  // Toggle del select
   if (select) {
     select.addEventListener("click", () => toggleElement(select));
   }
 }
 
-//  NAVEGACIÓN 
-
-// Configurar navegación entre páginas
+// ===== NAVEGACIÓN =====
 function initNavigation() {
   const navLinks = document.querySelectorAll("[data-nav-link]");
   const pages = document.querySelectorAll("[data-page]");
@@ -592,9 +566,7 @@ function initNavigation() {
   });
 }
 
-//  FORMULARIO DE CONTACTO
-
-// Configurar formulario de contacto
+// ===== FORMULARIO DE CONTACTO =====
 function initContactForm() {
   const contactForm = document.getElementById('contact-form');
   if (!contactForm) return;
@@ -602,7 +574,6 @@ function initContactForm() {
   contactForm.addEventListener('submit', handleFormSubmit);
 }
 
-// Manejar envío del formulario
 function handleFormSubmit(e) {
   e.preventDefault();
   
@@ -610,7 +581,6 @@ function handleFormSubmit(e) {
   const submitBtn = form.querySelector('.form-btn');
   const originalText = submitBtn.innerHTML;
   
-  // Obtener datos del formulario
   const formData = new FormData(form);
   const data = {
     name: formData.get('name'),
@@ -618,24 +588,19 @@ function handleFormSubmit(e) {
     message: formData.get('message')
   };
   
-  // Detectar idioma para mensajes
   const isEnglish = document.documentElement.lang === 'en' || window.location.href.includes('index_en');
   
-  // Validar datos
   if (!data.name || !data.email || !data.message) {
     showFormMessage(isEnglish ? 'Please fill in all fields' : 'Por favor completa todos los campos', 'error');
     return;
   }
   
-  // Mostrar estado de carga
   submitBtn.innerHTML = `<ion-icon name="hourglass-outline"></ion-icon><span>${isEnglish ? 'Sending...' : 'Enviando...'}</span>`;
   submitBtn.disabled = true;
   
-  // Enviar correo usando mailto (solución simple)
   sendEmail(data, submitBtn, originalText, isEnglish);
 }
 
-// Enviar correo usando mailto
 function sendEmail(data, submitBtn, originalText, isEnglish) {
   const subject = isEnglish 
     ? `New message from ${data.name} from your portfolio`
@@ -647,7 +612,6 @@ function sendEmail(data, submitBtn, originalText, isEnglish) {
   
   const mailtoLink = `mailto:jtroncosoart@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   
-  // Intentar abrir el cliente de correo
   const mailWindow = window.open(mailtoLink, '_blank');
   
   setTimeout(() => {
@@ -660,31 +624,25 @@ function sendEmail(data, submitBtn, originalText, isEnglish) {
       document.getElementById('contact-form').reset();
     }
     
-    // Restaurar botón
     submitBtn.innerHTML = originalText;
     submitBtn.disabled = false;
     
   }, 1000);
 }
 
-// Mostrar mensaje del formulario
 function showFormMessage(message, type) {
-  // Remover mensajes anteriores
   const existingMessage = document.querySelector('.form-message');
   if (existingMessage) {
     existingMessage.remove();
   }
   
-  // Crear nuevo mensaje
   const messageDiv = document.createElement('div');
   messageDiv.className = `form-message ${type}`;
   messageDiv.textContent = message;
   
-  // Insertar después del formulario
   const form = document.getElementById('contact-form');
   form.parentNode.insertBefore(messageDiv, form.nextSibling);
   
-  // Auto-remover después de 5 segundos
   setTimeout(() => {
     if (messageDiv.parentNode) {
       messageDiv.remove();
@@ -692,7 +650,6 @@ function showFormMessage(message, type) {
   }, 5000);
 }
 
-// Validación en tiempo real
 function initFormValidation() {
   const formInputs = document.querySelectorAll('#contact-form .form-input');
   
@@ -707,7 +664,6 @@ function initFormValidation() {
   });
 }
 
-// Validar campo individual
 function validateField(field) {
   const value = field.value.trim();
   const isEnglish = document.documentElement.lang === 'en' || window.location.href.includes('index_en');
@@ -729,7 +685,6 @@ function validateField(field) {
   return true;
 }
 
-// Mostrar error en campo
 function showFieldError(field, message) {
   clearFieldError(field);
   field.style.borderColor = 'var(--bittersweet-shimmer)';
@@ -746,7 +701,6 @@ function showFieldError(field, message) {
   field.parentNode.appendChild(errorDiv);
 }
 
-// Limpiar error del campo
 function clearFieldError(field) {
   field.style.borderColor = '';
   
@@ -756,13 +710,58 @@ function clearFieldError(field) {
   }
 }
 
-//  INICIALIZACIÓN 
-document.addEventListener('DOMContentLoaded', function() {
+// ===== SCROLL TO TOP =====
+function initScrollToTop() {
+  const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+  
+  if (!scrollToTopBtn) return;
+
+  function toggleScrollToTopButton() {
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    
+    if (scrollPosition > 500 || (scrollPosition + windowHeight) >= (documentHeight - 100)) {
+      scrollToTopBtn.classList.add('active');
+      
+      if ((scrollPosition + windowHeight) >= (documentHeight - 100)) {
+        scrollToTopBtn.classList.add('pulse');
+      } else {
+        scrollToTopBtn.classList.remove('pulse');
+      }
+    } else {
+      scrollToTopBtn.classList.remove('active', 'pulse');
+    }
+  }
+
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  window.addEventListener('scroll', toggleScrollToTopButton);
+  scrollToTopBtn.addEventListener('click', scrollToTop);
+  
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Home') {
+      e.preventDefault();
+      scrollToTop();
+    }
+  });
+
+  toggleScrollToTopButton();
+}
+
+// ===== INICIALIZACIÓN =====
+function initApp() {
   initTheme();
   loadPortfolio();
   initNavigation();
   initContactForm();
   initFormValidation();
+  initScrollToTop();
 
   // Sidebar toggle
   const sidebarBtn = document.querySelector('[data-sidebar-btn]');
@@ -772,7 +771,7 @@ document.addEventListener('DOMContentLoaded', function() {
     sidebarBtn.addEventListener('click', () => toggleElement(sidebar));
   }
 
-  // Cerrar modal al hacer clic fuera (overlay) o con ESC
+  // Modal events
   const modalContainer = document.getElementById('portfolio-modal');
   const overlay = document.querySelector("[data-overlay]");
   const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
@@ -785,14 +784,12 @@ document.addEventListener('DOMContentLoaded', function() {
     modalCloseBtn.addEventListener("click", closeModal);
   }
   
-  // Cerrar modal con tecla ESC
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && modalContainer.classList.contains('active')) {
       closeModal();
     }
   });
 
-  // Cerrar modal al hacer clic en el overlay del modal
   if (modalContainer) {
     modalContainer.addEventListener('click', function(e) {
       if (e.target === modalContainer) {
@@ -800,4 +797,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
-});
+}
+
+document.addEventListener('DOMContentLoaded', initApp);
