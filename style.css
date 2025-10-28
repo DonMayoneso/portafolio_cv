@@ -3275,7 +3275,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* Contenedor de imagen en modal */
 .modal-image-container {
   position: relative;
   cursor: zoom-in;
@@ -3289,11 +3288,285 @@ textarea.form-input::-webkit-resizer { display: none; }
   transform: scale(1.02);
 }
 
-/* Asegurar que el modal no se cierre al hacer clic en el contenido */
 .portfolio-modal {
   pointer-events: auto;
 }
 
 .portfolio-modal * {
   pointer-events: auto;
+}
+/*-----------------------------------*\
+  #SIDEBAR MOBILE ENHANCEMENTS
+\*-----------------------------------*/
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    max-height: 160px;
+    transition: var(--transition-2);
+  }
+  
+  .sidebar.active {
+    max-height: 650px;
+  }
+  
+  .sidebar-info {
+    position: relative;
+    padding-right: 60px; 
+  }
+
+  .info-content .name {
+    font-size: calc(var(--fs-3) * 0.9);
+    line-height: 1.2;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+  
+  .info-content .title {
+    font-size: var(--fs-8);
+    padding: 3px 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+  
+  .info_more-btn {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: var(--border-gradient-onyx);
+    border-radius: 10px;
+    padding: 8px 12px;
+    box-shadow: var(--shadow-2);
+    z-index: 2;
+    min-width: 120px; 
+  }
+  
+  .info_more-btn span {
+    display: block !important;
+    font-size: var(--fs-8);
+    font-weight: var(--fw-500);
+    color: var(--orange-yellow-crayola);
+  }
+  
+  .info_more-btn ion-icon {
+    display: none; 
+  }
+  
+  .avatar-box {
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+  
+  .avatar-box .front img,
+  .avatar-box .back img {
+    border-radius: 15px;
+  }
+  
+  .info-content {
+    flex: 1;
+    min-width: 0; 
+    margin-left: 15px;
+  }
+  
+  .sidebar.active .avatar-box {
+    width: 150px !important;
+    height: 150px !important;
+  }
+  
+  .sidebar.active .info_more-btn {
+    top: 20px;
+    right: 20px;
+    transform: none;
+  }
+  
+  .sidebar.active .info_more-btn ion-icon {
+    display: block;
+  }
+  
+  .sidebar.active .info-content .name,
+  .sidebar.active .info-content .title {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sidebar {
+    max-height: 140px;
+  }
+  
+  .avatar-box {
+    width: 70px !important;
+    height: 70px !important;
+  }
+  
+  .info-content .name {
+    font-size: calc(var(--fs-3) * 0.8);
+  }
+  
+  .info_more-btn {
+    min-width: 110px;
+    padding: 6px 10px;
+  }
+  
+  .info_more-btn span {
+    font-size: 10px;
+  }
+}
+
+.info_more-btn {
+  transition: all 0.3s ease;
+}
+
+.info_more-btn:hover {
+  background: var(--bg-gradient-yellow-1);
+  transform: translateY(-2px);
+}
+
+.sidebar.active .info_more-btn ion-icon {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .info-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.info_more-btn::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: var(--bg-gradient-jet);
+  border-radius: inherit;
+  z-index: -1;
+  transition: var(--transition-1);
+}
+
+.info_more-btn:hover::before {
+  background: var(--bg-gradient-yellow-2);
+}
+/*-----------------------------------*\
+  #SOCIAL BUTTONS WITH ICONS
+\*-----------------------------------*/
+
+.social-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+}
+
+.social-button {
+  background: var(--border-gradient-onyx);
+  color: var(--orange-yellow-crayola);
+  padding: 12px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: var(--fs-7);
+  transition: var(--transition-1);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+}
+
+.social-button::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: var(--bg-gradient-jet);
+  border-radius: inherit;
+  z-index: -1;
+  transition: var(--transition-1);
+}
+
+.social-button:hover {
+  background: var(--bg-gradient-yellow-1);
+  color: var(--smoky-black);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-3);
+}
+
+.social-button:hover::before {
+  background: var(--bg-gradient-yellow-2);
+}
+
+.social-button ion-icon {
+  font-size: 18px;
+  transition: var(--transition-1);
+}
+
+.social-button:hover ion-icon {
+  transform: scale(1.1);
+}
+
+/* Efectos específicos para cada red social */
+.social-button[href*="instagram"]:hover ion-icon {
+  color: #E4405F;
+}
+
+.social-button[href*="linkedin"]:hover ion-icon {
+  color: #0A66C2;
+}
+
+.social-button[href*="whatsapp"]:hover ion-icon {
+  color: #25D366;
+}
+
+/* Responsive para móviles */
+@media screen and (max-width: 768px) {
+  .social-buttons {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .social-button {
+    padding: 15px 20px;
+    font-size: var(--fs-6);
+  }
+  
+  .social-button ion-icon {
+    font-size: 20px;
+  }
+}
+
+/* Para pantallas muy pequeñas */
+@media screen and (max-width: 480px) {
+  .social-buttons {
+    gap: 10px;
+  }
+  
+  .social-button {
+    padding: 12px 15px;
+    min-height: 40px;
+  }
+}
+
+/* Versión en inglés - si necesitas mantener consistencia */
+[data-theme="light"] .social-button {
+  background: var(--border-gradient-onyx);
+}
+
+[data-theme="light"] .social-button::before {
+  background: var(--bg-gradient-jet);
 }

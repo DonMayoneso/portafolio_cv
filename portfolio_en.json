@@ -1,0 +1,247 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Angel",
+      "category": "ilustracion-digital",
+      "image": "assets/diseño/angel_ilustracion.png",
+      "description": "Digital illustration creation in Autodesk Sketchbook",
+      "technologies": ["Autodesk Sketchbook"],
+      "year": "2024",
+      "type": "image"
+    },
+    {
+      "id": 2,
+      "title": "University Logo Vectorization", 
+      "category": "diseno-grafico",
+      "image": "assets/diseño/asu_filosofia_logo.png",
+      "description": "Visual identity for University Philosophy Group",
+      "technologies": ["Illustrator"],
+      "year": "2024",
+      "type": "image"
+    },
+    {
+      "id": 3,
+      "title": "Logo Motion Graphics",
+      "category": "animacion-digital", 
+      "video": "assets/animacion/reforestemos_ecuador.mp4",
+      "poster": "assets/animacion/poster_reforestemos.jpg",
+      "description": "Corporate logo animation created with After Effects",
+      "technologies": ["After Effects", "Premiere Pro", "Illustrator"],
+      "year": "2024",
+      "type": "video"
+    },
+    {
+      "id": 4,
+      "title": "Still Life",
+      "category": "fotografia",
+      "image": "assets/fotografia/bodegon.jpg", 
+      "description": "Professional still life photography session with controlled lighting",
+      "technologies": ["Lightroom", "Photoshop", "Canon Rebel T7"],
+      "year": "2022",
+      "type": "image"
+    },
+    {
+      "id": 5,
+      "title": "Web CV",
+      "category": "desarrollo-web",
+      "image": "assets/web_personal.png",
+      "description": "Development of personal web CV with HTML, CSS and JavaScript, https://donmayoneso.github.io/portafolio_cv", 
+      "technologies": ["HTML5", "CSS3", "JavaScript"],
+      "year": "2025",
+      "type": "image"
+    },
+    {
+      "id": 6,
+      "title": "Digital Flight Animation",
+      "category": "animacion-digital",
+      "video": "assets/animacion/animacion_vuelo.mp4",
+      "poster": "assets/animacion/poster_vuelo.jpg",
+      "description": "Digital animation practice with flight and movement effects",
+      "technologies": ["Autodesk Sketchbook", "After Effects", "Premiere Pro"],
+      "year": "2023",
+      "type": "video"
+    },
+    {
+      "id": 7,
+      "title": "Research Program Brand Manual",
+      "category": "diseno-grafico",
+      "pdf": "assets/diseño/manual_marca_pirp.pdf",
+      "description": "Brand manual and visual identity creation for Glacier Research Program",
+      "technologies": ["Illustrator", "Photoshop"],
+      "year": "2022",
+      "type": "pdf"
+    },
+    {
+      "id": 8,
+      "title": "Compressed Brand Manual",
+      "category": "diseno-grafico",
+      "image": "assets/diseño/manual_comprimido.jpg",
+      "description": "Compressed Brand Manual Design - Reforestemos Ecuador", 
+      "technologies": ["Illustrator", "Photoshop"],
+      "year": "2024",
+      "type": "image"
+    },
+    {
+      "id": 9,
+      "title": "Back to the Future Poster",
+      "category": "diseno-grafico",
+      "image": "assets/diseño/poster_btdf.jpg",
+      "description": "Poster design practice with classic cinema theme", 
+      "technologies": ["Illustrator"],
+      "year": "2024",
+      "type": "image"
+    },
+    {
+      "id": 10,
+      "title": "Uzumaki Poster",
+      "category": "diseno-grafico",
+      "image": "assets/diseño/poster_uzumaki.jpg",
+      "description": "Poster design practice", 
+      "technologies": ["Illustrator"],
+      "year": "2024",
+      "type": "image"
+    },
+    {
+      "id": 13,
+      "title": "Packaging design for local coffee shop",
+      "category": "diseno-grafico",
+      "pdf": "assets/diseño/packaging_catalinota.pdf",
+      "description": "Custom packaging for local coffee shop focused on printing",
+      "technologies": ["Illustrator", "Photoshop"],
+      "year": "2024",
+      "type": "pdf"
+    },
+    {
+      "id": 14,
+      "title": "Mixed Animation",
+      "category": "animacion-digital", 
+      "video": "assets/animacion/animacion_mixta.mp4",
+      "description": "Digital animation for university project combining different animation styles",
+      "technologies": ["Animate"],
+      "year": "2024",
+      "type": "video"
+    },    
+    {
+      "id": 15,
+      "title": "Mental Health",
+      "category": "animacion-digital", 
+      "video": "assets/animacion/animacion_grupal.mp4",
+      "description": "Group digital animation about mental health awareness",
+      "technologies": ["Animate"],
+      "year": "2023",
+      "type": "video"
+    },
+    {
+      "id": 16,
+      "title": "Manual animation practice",
+      "category": "animacion-digital", 
+      "video": "assets/animacion/pelota_layout.mp4",
+      "description": "Frame by frame ball animation practice",
+      "technologies": ["Scanned drawing", "Photoshop"],
+      "year": "2023",
+      "type": "video"
+    },
+    {
+      "id": 17,
+      "title": "3D Airplane",
+      "category": "realidad-aumentada",
+      "model3d": "assets/diseño/aeroplano.3ds",
+      "preview": "assets/diseño/aeroplano.jpg",
+      "description": "3D modeling for university project",
+      "technologies": ["Maxon Cinema 4D"],
+      "year": "2025",
+      "type": "3d"
+    },
+    {
+      "id": 18,
+      "title": "Long exposure",
+      "category": "fotografia",
+      "image": "assets/fotografia/exposicion.jpg", 
+      "description": "Professional long exposure photography session with controlled effects",
+      "technologies": ["Lightroom", "Photoshop", "Canon Rebel T7"],
+      "year": "2022",
+      "type": "image"
+    },
+    {
+      "id": 19,
+      "title": "Cultural",
+      "category": "fotografia",
+      "image": "assets/fotografia/cultural.png", 
+      "description": "Cultural event photography - Inti Raymi",
+      "technologies": ["Lightroom", "Photoshop", "Canon Rebel T7"],
+      "year": "2022",
+      "type": "image"
+    },
+    {
+      "id": 20,
+      "title": "Nature",
+      "category": "fotografia",
+      "image": "assets/fotografia/naturaleza.png", 
+      "description": "Nature photography practice with focus play",
+      "technologies": ["Lightroom", "Photoshop", "Canon Rebel T7"],
+      "year": "2022",
+      "type": "image"
+    },
+    {
+      "id": 21,
+      "title": "Life Glitch",
+      "category": "fotografia",
+      "image": "assets/fotografia/life_glitch.jpg", 
+      "description": "Personal photo editing practice with Photoshop",
+      "technologies": ["Photoshop", "iPhone 13"],
+      "year": "2025",
+      "type": "image"
+    },
+    {
+      "id": 22,
+      "title": "Product catalog design",
+      "category": "diseno-grafico",
+      "pdf": "assets/diseño/catalogo_creativo.pdf",
+      "description": "University practice of creative product catalog design",
+      "technologies": ["Illustrator", "Photoshop"],
+      "year": "2023",
+      "type": "pdf"
+    },
+    {
+      "id": 23,
+      "title": "Pumpkin",
+      "category": "ilustracion-digital",
+      "image": "assets/diseño/calabaza.png", 
+      "description": "Digital illustration with Halloween theme",
+      "technologies": ["Autodesk Sketchbook", "Graphics tablet"],
+      "year": "2019",
+      "type": "image"
+    },
+    {
+      "id": 24,
+      "title": "El Miche",
+      "category": "ilustracion-digital",
+      "image": "assets/diseño/miche.jpg", 
+      "description": "Low poly vector illustration of Ecuadorian character *El Miche*",
+      "technologies": ["Illustrator"],
+      "year": "2022",
+      "type": "image"
+    },
+    {
+      "id": 25,
+      "title": "The Beatles",
+      "category": "ilustracion-digital",
+      "image": "assets/diseño/beatles.png", 
+      "description": "Personal illustration of The Beatles in my graphic style",
+      "technologies": ["Illustrator"],
+      "year": "2019",
+      "type": "image"
+    },
+    {
+      "id": 26,
+      "title": "QR Generator",
+      "category": "desarrollo-web",
+      "image": "assets/web_qr.png",
+      "description": "Development of free QR generator, with download and export option in Jpg, Png and Svg, https://donmayoneso.github.io/generadorQr", 
+      "technologies": ["HTML5", "CSS3", "JavaScript"],
+      "year": "2025",
+      "type": "image"
+    }
+  ]
+}

@@ -15,59 +15,63 @@
 <body>
   <main>
     <!-- SIDEBAR -->
-    <aside class="sidebar" data-sidebar>
-      <div class="sidebar-info">
-        <figure class="avatar-box">
-          <div class="front">
-            <img src="assets/diseño/Avatar.png" alt="Javier Troncoso">
-          </div>
-          <div class="back">
-            <img src="assets/Yo.jpg" alt="Javier Troncoso">
-          </div>
-        </figure>
-        <div class="info-content">
-          <h1 class="name" title="Javier Troncoso">Javier Troncoso</h1>
-          <p class="title">Artist & Multimedia Designer</p>
-        </div>
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show Contacts</span>
-          <ion-icon name="chevron-down"></ion-icon>
-        </button>
+<aside class="sidebar" data-sidebar>
+  <div class="sidebar-info">
+    <figure class="avatar-box">
+      <div class="front">
+        <img src="assets/diseño/Avatar.png" alt="Javier Troncoso">
       </div>
-      <div class="theme-toggle-container">
-<div class="sidebar-controls">
-  
-  <!-- Theme Toggle -->
-  <div class="theme-toggle-container">
-  <label class="theme-toggle" for="theme-checkbox">
-    <input type="checkbox" id="theme-checkbox" class="theme-checkbox">
-    <span class="theme-slider">
-      <span class="theme-icon theme-icon-dark">
-        <ion-icon name="moon"></ion-icon>
-      </span>
-      <span class="theme-icon theme-icon-light">
-        <ion-icon name="sunny"></ion-icon>
-      </span>
-    </span>
-    <span class="theme-text">Dark Mode</span>
-  </label>
-</div>
-
-  <!-- Language Toggle - MODIFIED -->
-  <div class="language-toggle-container">
-    <a href="../index.html" class="language-toggle">
-      <span class="language-text">Español</span>
-      <span class="language-flag">🌐</span>
-    </a>
+      <div class="back">
+        <img src="assets/Yo.jpg" alt="Javier Troncoso">
+      </div>
+    </figure>
+    <div class="info-content">
+      <h1 class="name" title="Javier Troncoso">Javier Troncoso</h1>
+      <p class="title">Artist & Multimedia Designer</p>
+    </div>
+    <button class="info_more-btn" data-sidebar-btn>
+      <span>Show more</span>
+      <ion-icon name="chevron-down"></ion-icon>
+    </button>
   </div>
+  
+  <!-- Controles del sidebar - Solo visibles cuando está expandido -->
+  <div class="sidebar-controls-wrapper">
+    <div class="theme-toggle-container">
+      <div class="sidebar-controls">
+        <!-- Theme Toggle -->
+        <div class="theme-toggle-container">
+          <label class="theme-toggle" for="theme-checkbox">
+            <input type="checkbox" id="theme-checkbox" class="theme-checkbox">
+            <span class="theme-slider">
+              <span class="theme-icon theme-icon-dark">
+                <ion-icon name="moon"></ion-icon>
+              </span>
+              <span class="theme-icon theme-icon-light">
+                <ion-icon name="sunny"></ion-icon>
+              </span>
+            </span>
+            <span class="theme-text">Dark Mode</span>
+          </label>
+        </div>
 
-  <!-- Download CV -->
-  <a href="assets/Hoja de vida Javier Troncoso.pdf" class="download-cv-btn" download>
-    <ion-icon name="download-outline"></ion-icon>
-    <span>Download CV</span>
-  </a>
-</div>
-    </aside>
+        <!-- Language Toggle - MODIFIED -->
+        <div class="language-toggle-container">
+          <a href="../index.html" class="language-toggle">
+            <span class="language-text">Español</span>
+            <span class="language-flag">🌐</span>
+          </a>
+        </div>
+
+        <!-- Download CV -->
+        <a href="assets/Hoja de vida Javier Troncoso.pdf" class="download-cv-btn" download>
+          <ion-icon name="download-outline"></ion-icon>
+          <span>Download CV</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</aside>
 
     <!-- Content -->
     <div class="main-content">
@@ -418,11 +422,20 @@
 
         <section class="social-links">
           <h3 class="h3 form-title">Social Media</h3>
-          <div class="social-buttons">
-            <a href="https://www.instagram.com/sir_mayoneso" class="social-button" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a href="https://www.linkedin.com/in/javier-troncoso-3a0757267" class="social-button" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="https://wa.me/+593984245139" class="social-button" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-          </div>
+            <div class="social-buttons">
+              <a href="https://www.instagram.com/sir_mayoneso" class="social-button" target="_blank" rel="noopener noreferrer">
+                <ion-icon name="logo-instagram"></ion-icon>
+                <span>Instagram</span>
+              </a>
+              <a href="https://www.linkedin.com/in/javier-troncoso-3a0757267" class="social-button" target="_blank" rel="noopener noreferrer">
+                <ion-icon name="logo-linkedin"></ion-icon>
+                <span>LinkedIn</span>
+              </a>
+              <a href="https://wa.me/+593984245139" class="social-button" target="_blank" rel="noopener noreferrer">
+                <ion-icon name="logo-whatsapp"></ion-icon>
+                <span>WhatsApp</span>
+              </a>
+            </div>
         </section>
         <section class="contact-form-section">
           <h3 class="h3 form-title">Send me a message</h3>
