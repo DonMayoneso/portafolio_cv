@@ -3176,3 +3176,31 @@ textarea.form-input::-webkit-resizer { display: none; }
     font-size: 16px;
   }
 }
+/*-----------------------------------*\
+  #FOOTER COPYRIGHT
+\*-----------------------------------*/
+
+.footer-copyright {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  color: rgba(184, 184, 184, 0.728);
+  font-size: var(--fs-7);
+  font-weight: var(--fw-300);
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Para tema claro */
+[data-theme="light"] .footer-copyright {
+  color: rgba(100, 100, 100, 0.728);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .footer-copyright {
+    padding-top: 25px;
+    padding-bottom: 15px;
+    font-size: var(--fs-8);
+  }
+}
