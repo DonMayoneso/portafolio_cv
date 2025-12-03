@@ -242,6 +242,19 @@
       "technologies": ["HTML5", "CSS3", "JavaScript"],
       "year": "2025",
       "type": "image"
+    },
+    {
+      "id": 27,
+      "title": "V.A.O. - Web Experience",
+      "category": "desarrollo-web",
+      "image": "assets/VAO.png",
+      "description": "Development of an immersive web experience focused on SDG6, featuring a dual narrative, retro OS simulation, and interactive hacking mechanics, https://https://donmayoneso.github.io/VAO", 
+      "technologies": ["HTML5", "CSS3", "ES6+"],
+      "year": "2025",
+      "type": "image"
     }
+
+    
   ]
+
 }
