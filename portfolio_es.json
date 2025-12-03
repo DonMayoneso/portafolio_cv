@@ -242,10 +242,20 @@
       "technologies": ["HTML5", "CSS3", "JavaScript"],
       "year": "2025",
       "type": "image"
+    },
+    {
+      "id": 27,
+      "title": "V.A.O. - Experiencia Web",
+      "category": "desarrollo-web",
+      "image": "assets/VAO.png",
+      "description": "Desarrollo de experiencia web inmersiva sobre el ODS 6, con narrativa dual, simulación de SO retro y mecánicas de hacking interactivo. https://https://donmayoneso.github.io/VAO", 
+      "technologies": ["HTML5", "CSS3", "ES6+"],
+      "year": "2025",
+      "type": "image"
     }
-
     
 
 
   ]}
+
 
